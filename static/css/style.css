@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+}
+
+nav,
+footer {
+  padding: 0;
+}
+
+.bg-color {
+  background-color: #d9dad5;
+}
+
+.green {
+  color: #5b6a20;
+}
+
+.image-side {
+  background-image: url("../images/children-cooking.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 200px; 
+}
+
+footer a {
+  text-decoration: none;
+  color: #aa4933;
+}
+
+
+
+
+@media screen and (max-width: 576px) {
+  .image-side {
+    height: 200px; /* или колку сакаш */
+   
+  }
+
+  main {
+    overflow-y: auto;
+  }
+
+}
+
+@media screen and (min-width: 576px) {
+  main {
+    overflow-y: hidden;
+  }
+
+}
