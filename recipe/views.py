@@ -3,7 +3,5 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def my_recipes(request): 
-    return HttpResponse("Hello, my_recipes!") 
-
-
+def my_recipes(request):
+    return HttpResponse("Hello, my_recipes!")
