@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 def dashboard(request):
-    return HttpResponse("Hello, dashboard!")
+    return render(request, 'user_profile/dashboard.html')
