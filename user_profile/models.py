@@ -12,3 +12,11 @@ class Profile(models.Model):
     about = models.TextField(
         max_length=500, blank=True, verbose_name="Something about you"
     )
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on  = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return self.user
