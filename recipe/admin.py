@@ -4,7 +4,6 @@ from .models import Meal, Recipe
 
 
 @admin.register(Meal)
-@admin.register(Recipe)
 class MealAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Meal model.
@@ -15,6 +14,7 @@ class MealAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 
+@admin.register(Recipe)
 class RecipeAdmin(SummernoteModelAdmin):
     """
     Admin configuration for the Recipe model.
