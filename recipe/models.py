@@ -62,3 +62,21 @@ class Like(models.Model):
 
     def __str__(self):
         return f"{self.user.username} liked {self.recipe.title}"
+
+
+class Comment(models.Model):
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name='comments'
+    )
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='user_comments'
+    )
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.body[:50]} by {self.author.username}"
