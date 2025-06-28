@@ -40,7 +40,8 @@ class Favourite(models.Model):
     added_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'recipe')  
+        unique_together = ('user', 'recipe')
+        ordering = ["-added_at"]
 
     def __str__(self):
         return f"{self.user.username} | {self.recipe.title}"
