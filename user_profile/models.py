@@ -19,4 +19,4 @@ class Profile(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return self.user
+        return str(self.user)
