@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Meal, Recipe, Favourite, Like
+from .models import Meal, Recipe, Favourite, Like, Comment
 
 
 @admin.register(Meal)
@@ -48,4 +48,15 @@ class LikeAdmin(admin.ModelAdmin):
     """
     list_display = ('user', 'recipe', 'created_on')
     search_fields = ['user__username', 'recipe__title']
+    list_filter = ('created_on',)
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the Comment model.
+    Displays comment info, allows search and filtering.
+    """
+    list_display = ('recipe', 'author', 'created_on')
+    search_fields = ['body', 'author__username', 'recipe__title']
     list_filter = ('created_on',)

@@ -79,4 +79,4 @@ class Comment(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.body[:50]} by {self.author.username}"
+        return f"{self.body} by {self.author.username}"
