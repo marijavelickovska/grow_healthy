@@ -3,6 +3,8 @@ from .models import Profile
 
 
 admin.site.register(Profile)
+
+
 class ProfileAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Profile model.
@@ -10,5 +12,5 @@ class ProfileAdmin(admin.ModelAdmin):
     """
 
     list_display = ('user', 'name', 'created_on')
-    search_fields = ['user', 'name']
+    search_fields = ['user__username', 'name']
     list_filter = ('created_on',)

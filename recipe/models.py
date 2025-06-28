@@ -7,7 +7,7 @@ class Meal(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Recipe(models.Model):
@@ -45,3 +45,20 @@ class Favourite(models.Model):
 
     def __str__(self):
         return f"{self.user.username} | {self.recipe.title}"
+
+
+class Like(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='likes'
+        )
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name='liked_by'
+        )
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'recipe')
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"{self.user.username} liked {self.recipe.title}"
