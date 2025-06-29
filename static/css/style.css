@@ -31,12 +31,14 @@ footer {
   color: #5b6a20;
 }
 
-.image-side {
-  background-image: url("../images/children-cooking.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 200px; 
+#hero-image {
+  background: url("../images/children-cooking.jpg") no-repeat center center/cover;
+  height: 500px;
+}
+
+#hero-image-login {
+  background: url("../images/children-cooking-1.jpg") no-repeat center center/cover;
+  height: 800px;
 }
 
 footer a {
@@ -44,24 +46,18 @@ footer a {
   color: #aa4933;
 }
 
-
-
-
 @media screen and (max-width: 576px) {
   .image-side {
     height: 200px; /* или колку сакаш */
-   
   }
 
   main {
     overflow-y: auto;
   }
-
 }
 
 @media screen and (min-width: 576px) {
   main {
     overflow-y: hidden;
   }
-
 }
