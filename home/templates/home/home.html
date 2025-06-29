@@ -1,18 +1,42 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block main_class %}{% endblock %}
 
 {% block hero_image %}
-<div class="row text-center h-100">
-    <div class="col-12 col-md-6 mt-4 h-100">
-        <h3>Welcome to</h3>
-        <h1>Grow Healthy</h1>
-        <p class="fst-italic green">Your guide to tasty and nutritious meals for growing minds.
-            Healthy eating habits begin with small choices that last a lifetime.</p>
-        <p>Eat healthy, grow strong and happy!</p>
-        <p>Join our community by logging in or registering!</p>
+<!-- Hero section -->
+<section class="container">
+    <div class="row">
+        <div class="col-12" id="hero-image"></div>
     </div>
-    <div class="col-12 col-md-6 image-side h-100"></div>
-</div>
+</section>
 {% endblock %}
 
 {% block about_grow_healthy %}
+<section>
+    <div class="row text-center">
+        <div class="col-12 mt-4 h-100">
+            <h3>Welcome to</h3>
+            <h1>Grow Healthy</h1>
+            <p class="fst-italic green">Your guide to tasty and nutritious meals for growing minds.
+                Healthy eating habits begin with small choices that last a lifetime.</p>
+            <p>Eat healthy, grow strong and happy!</p>
+            <p>Grow Healthy is more than just a website — it's your daily companion on the journey to better nutrition
+                and mindful eating.
+                Here, you'll find a rich collection of healthy recipes designed for kids and families, created with love
+                and balance in mind. Whether you're looking for a quick school lunch, a fun snack idea, or a delicious
+                dinner the whole family can enjoy — we've got you covered!
+
+                But we don't stop at recipes.
+                Our platform also offers expert tips, fun facts, and practical advice about nutrition and healthy
+                habits. Learn how to build a balanced plate, how to make vegetables more fun for kids, and how small
+                daily changes can have a big impact on your child's growth and development.
+
+                We believe that every child deserves a healthy start, and that starts at home — with informed choices
+                and simple, joyful meals.</p>
+                <h3>Join our community by logging in or registering!</h3>
+                <p>Together, let's raise strong, healthy, and happy children — one bite at a time.</p>
+        </div>
+    </div>
+</section>
 {% endblock %}
