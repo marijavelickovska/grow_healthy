@@ -35,13 +35,60 @@
 
                 We believe that every child deserves a healthy start, and that starts at home — with informed choices
                 and simple, joyful meals.</p>
-            <div>
-                <h3>Join our community by logging in or registering!</h3>
-                <p>Together, let's raise strong, healthy, and happy children — one bite at a time.</p>
-                <a href="#" class="btn btn-success px-5 mb-4">Log In</a>
-                <a href="#" class="btn btn-outline-success px-5 mb-4">Sign Up</a>
-            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
 
+
+{% block recipes_list %}
+<section class="container my-4">
+    <div class="row text-center">
+        {% for recipe in recipe_list %}
+        <div class="col-12 col-md-3">
+            <div class="card card-recipes-home my-4">
+                <img src=" {{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe.title }}</h5>
+                    <p class="card-text">{{ recipe.excerpt }}</p>
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:4 %}
+        <!--trik za da se pojavuvaat po 3 posta vo eden row, ako ima tri div ke se zatvori i ke se otvori nov div so nov row-->
+    </div>
+    <div class="row text-center">
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row my-4">
+        <div class="col-12">
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block join_us %}
+<section class="container mb-4">
+    <div class="row text-center">
+        <div class="col-12">
+            <h3>Join our community by logging in or registering!</h3>
+            <p class="mb-4">Together, let's raise strong, healthy, and happy children — one bite at a time.</p>
+            <a href="#" class="btn btn-success px-5 mb-4">Log In</a>
+            <a href="#" class="btn btn-outline-success px-5 mb-4">Sign Up</a>
         </div>
     </div>
 </section>

@@ -44,6 +44,11 @@ footer {
   height: 800px;
 }
 
+/* Home page */
+.card-recipes-home {
+  width: 18rem;
+}
+
 footer a {
   text-decoration: none;
   color: #aa4933;
