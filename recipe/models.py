@@ -13,13 +13,14 @@ class Meal(models.Model):
 class Recipe(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='recipes'
+    )
     image = CloudinaryField('image')
     meal_type = models.ManyToManyField(Meal, related_name='type')
     ingredients = models.TextField()
     instructions = models.TextField()
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='recipes'
-    )
+    excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
