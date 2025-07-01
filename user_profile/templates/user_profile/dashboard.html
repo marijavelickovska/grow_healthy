@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block main_class %}container-fluid{% endblock %}
 
 {% block dashboard %}
@@ -28,7 +29,6 @@
         </form>
     </aside>
 
-
     <!-- Main content -->
     <section class="col-12 col-md-9">
         <div class="row">
@@ -36,28 +36,27 @@
                 <div class="row">
                     <!-- Sub-navbar -->
                     <div class="col-12 d-flex flex-column flex-lg-row p-0 mb-md-4">
-                        <a href="#" class="sub-nav-btn flex-fill text-center">Dashboard</a>
-                        <a href="#" class="sub-nav-btn flex-fill text-center">My Recipes</a>
-                        <a href="#" class="sub-nav-btn flex-fill text-center">Favourites</a>
-                        <a href="#" class="sub-nav-btn flex-fill text-center">Add Recipe</a>
+                        <a href="{% url 'dashboard' %}"
+                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'dashboard' %} active{% endif %}">Dashboard</a>
+                        <a href="{% url 'my_recipes' %}"
+                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'my_recipes' %} active{% endif %}">My
+                            Recipes</a>
+                        <a href="{% url 'favourites' %}"
+                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'favourites' %} active{% endif %}">Favourites</a>
+                        <a href="{% url 'add_recipe' %}"
+                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'add_recipe' %} active{% endif %}">Add
+                            Recipe</a>
                     </div>
                 </div>
             </div>
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="card h-100 shadow-sm">
-                            <img src="recipe_1.jpg" class="card-img-top" alt="Recipe Image">
-                            <div class="card-body">
-                                <h5 class="card-title">Chocolate Cake</h5>
-                                <p class="card-text">Rich and moist chocolate cake perfect for any occasion.</p>
-                            </div>
-                        </div>
+                        card
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
-
 {% endblock %}

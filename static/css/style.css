@@ -104,6 +104,11 @@ footer {
   text-decoration: none;
 }
 
+.sub-nav-btn.active {
+  background-color: var(--hover-color); 
+  border-radius: 0;          
+}
+
 /* Footer */
 footer a {
   text-decoration: none;
