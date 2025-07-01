@@ -41,7 +41,8 @@
             <a class="navbar-brand green bold fs-4" href="{% url 'home' %}">GrowHealthy🌿</a>
             <ul class="nav justify-content-end">
                 {% if user.is_authenticated %}
-                <li class="nav-item">
+                <li class="nav-item" style="display:flex; align-items:center; gap:10px;">
+                    <p style="margin:0;">Hello, {{ user.username }}!</p>
                     <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
                         href="{% url 'account_logout' %}">Log Out</a>
                 </li>
@@ -61,6 +62,9 @@
 
     <main class="{% block main_class %}{% endblock %}">
         {% block login %}
+        {% endblock %}
+
+        {% block logout %}
         {% endblock %}
 
         {% block hero_image %}
