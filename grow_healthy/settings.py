@@ -67,6 +67,8 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/user_profile/dashboard/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
+
 
 
 MIDDLEWARE = [
