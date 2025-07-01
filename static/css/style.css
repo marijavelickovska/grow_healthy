@@ -1,3 +1,11 @@
+/* CSS Variables */
+:root {
+  --primary-color: #d9dad5; 
+  --secondary-color: #6a7e1d;
+  --hover-color: #90a92e;
+}
+
+/* Global styles */
 * {
   box-sizing: border-box;
 }
@@ -24,12 +32,23 @@ footer {
   padding: 0;
 }
 
+/* Navbar */
+.username {
+  display: flex;
+  align-items: center;
+}
+
+.username p {
+  margin: 0;
+}
+
+/* Home page */
 .bg-color {
-  background-color: #d9dad5;
+  background-color: var(--primary-color);
 }
 
 .green {
-  color: #5b6a20;
+  color: var(--secondary-color)
 }
 
 #hero-image {
@@ -44,19 +63,48 @@ footer {
   height: 800px;
 }
 
-/* Home page */
-.card-recipes-home {
+.card-home {
   width: 18rem;
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 5px 10px 15px gray;
 }
 
-#recipe-message {
-  display:none; 
-  color: red; 
+.card-home-height {
+  min-height: 150px;
 }
 
+#recipe-message {
+  display: none;
+  color: red;
+}
+
+/* Dashboard */
+.profile-img-preview {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid lightgray;
+}
+
+.sub-nav-btn {
+  padding: 10px 0;
+  background-color: var(--secondary-color);
+  color: white;
+  border: 1px solid var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  user-select: none;
+  display: block;
+}
+
+.sub-nav-btn:hover {
+  background-color: var(--hover-color);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Footer */
 footer a {
   text-decoration: none;
   color: #aa4933;
@@ -75,5 +123,27 @@ footer a {
 @media screen and (min-width: 576px) {
   main {
     overflow-y: hidden;
+  }
+}
+
+@media (max-width: 992px) {
+  .sub-nav-btn {
+    border-radius: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sub-nav-btn:not(:last-child) {
+    border-right: none;
+  }
+
+  .sub-nav-btn:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  .sub-nav-btn:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }

@@ -4,7 +4,6 @@
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 
-{% block main_class %}{% endblock %}
 
 {% block hero_image %}
 <!-- Hero section -->
@@ -43,21 +42,20 @@
 </section>
 {% endblock %}
 
-{% block recipes_list %}
+{% block home_recipes_list %}
 <section class="container my-4">
     <div class="row text-center">
         {% for recipe in recipe_list %}
         <div class="col-12 col-sm-6 col-lg-3">
-            <div class="card card-recipes-home my-4">
+            <div class="card card-home my-4">
                 <img src=" {{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
-                <div class="card-body">
+                <div class="card-body card-home-height">
                     <h5 class="card-title">{{ recipe.title }}</h5>
                     <p class="card-text">{{ recipe.excerpt }}</p>
                 </div>
             </div>
         </div>
         {% if forloop.counter|divisibleby:4 %}
-        <!--trik za da se pojavuvaat po 3 posta vo eden row, ako ima tri div ke se zatvori i ke se otvori nov div so nov row-->
     </div>
     <div class="row text-center">
         {% endif %}

@@ -1,6 +1,63 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block main_class %}container-fluid{% endblock %}
 
-<h1>Zdravo od dashboard.html</h1>
+{% block dashboard %}
+<!-- main-dashboard.html -->
 
+<div class="row">
+    <!-- Sidebar -->
+    <aside class="col-12 col-md-3 mb-4 mb-md-0 text-center">
+        <form id="profileForm" class="my-4">
+            <div class="mb-3">
+                <img src="{% static 'images/default.jpg'%}" alt="Profile image" class="mb-2 profile-img-preview">
+                <input type="file" class="form-control d-none" id="profileImgInput" accept="image/*">
+            </div>
+            <div class="mb-2">
+                <input type="text" class="form-control text-center" id="nameInput" value="Username" disabled />
+            </div>
+            <div class="mb-3">
+                <textarea class="form-control text-center" id="aboutInput" rows="3"
+                    disabled>Something about you</textarea>
+            </div>
+            <div>
+                <button type="button" class="btn btn-outline-primary btn-sm" id="editBtn">Edit</button>
+                <button type="submit" class="btn btn-success btn-sm d-none" id="saveBtn">Save</button>
+            </div>
+        </form>
+    </aside>
+
+
+    <!-- Main content -->
+    <section class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <!-- Sub-navbar -->
+                    <div class="col-12 d-flex flex-column flex-lg-row p-0 mb-md-4">
+                        <a href="#" class="sub-nav-btn flex-fill text-center">Dashboard</a>
+                        <a href="#" class="sub-nav-btn flex-fill text-center">My Recipes</a>
+                        <a href="#" class="sub-nav-btn flex-fill text-center">Favourites</a>
+                        <a href="#" class="sub-nav-btn flex-fill text-center">Add Recipe</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="recipe_1.jpg" class="card-img-top" alt="Recipe Image">
+                            <div class="card-body">
+                                <h5 class="card-title">Chocolate Cake</h5>
+                                <p class="card-text">Rich and moist chocolate cake perfect for any occasion.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

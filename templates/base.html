@@ -41,19 +41,19 @@
             <a class="navbar-brand green bold fs-4" href="{% url 'home' %}">GrowHealthy🌿</a>
             <ul class="nav justify-content-end">
                 {% if user.is_authenticated %}
-                <li class="nav-item" style="display:flex; align-items:center; gap:10px;">
-                    <p style="margin:0;">Hello, {{ user.username }}!</p>
+                <li class="nav-item username">
+                    <p>Hello, {{ user.username }}!</p>
                     <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
                         href="{% url 'account_logout' %}">Log Out</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
-                        href="{% url 'account_signup' %}">Sign Up</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
                         href="{% url 'account_login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                        href="{% url 'account_signup' %}">Sign Up</a>
                 </li>
                 {% endif %}
             </ul>
@@ -63,7 +63,7 @@
     <main class="{% block main_class %}{% endblock %}">
         {% block signup %}
         {% endblock %}
-        
+
         {% block login %}
         {% endblock %}
 
@@ -76,17 +76,22 @@
         {% block about_grow_healthy %}
         {% endblock %}
 
-        {% block recipes_list %}
+        {% block home_recipes_list %}
         {% endblock %}
 
         {% block join_us %}
         {% endblock %}
+
+        {% block dashboard %}
+        {% endblock %}
+
+
     </main>
 
     <footer class="mt-auto bg-color">
         <div class="text-center p-3">
             © 2025 Copyright:
-            <a href="https://github.com/marijavelickovska">Marija Velickovska Trajkovski</a>
+            <a href="https://github.com/marijavelickovska" target="_blank">Marija Velickovska Trajkovski</a>
         </div>
     </footer>
 
@@ -99,7 +104,7 @@
     <!-- Font Awesome kit -->
     <script src="https://kit.fontawesome.com/6cb9ceb3d5.js" crossorigin="anonymous"></script>
 
-     <!-- JS -->
+    <!-- JS -->
     <script src="{% static 'js/script.js' %}"></script>
 
 </body>

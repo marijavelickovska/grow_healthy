@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let cards = document.getElementsByClassName("card-recipes-home");
+    let cards = document.getElementsByClassName("card-home");
 
     for (let card of cards) {
         card.addEventListener("click", showRecipeMessage);
