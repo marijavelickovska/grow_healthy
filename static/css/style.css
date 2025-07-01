@@ -47,6 +47,14 @@ footer {
 /* Home page */
 .card-recipes-home {
   width: 18rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 5px 10px 15px gray;
+}
+
+#recipe-message {
+  display:none; 
+  color: red; 
 }
 
 footer a {

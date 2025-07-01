@@ -83,9 +83,12 @@
 {% endblock %}
 
 {% block join_us %}
-<section class="container mb-4">
+<section id="join_us" class="container mb-4">
     <div class="row text-center">
         <div class="col-12">
+            <div id="recipe-message" class="mb-4">
+                <p class="fst-italic fs-4">To see the recipe details, please log in or sign up.</p>
+            </div>
             <h3>Join our community by logging in or registering!</h3>
             <p class="mb-4">Together, let's raise strong, healthy, and happy children — one bite at a time.</p>
             <a href="{% url 'account_login' %}" class="btn btn-success px-5 mb-4">Log In</a>
