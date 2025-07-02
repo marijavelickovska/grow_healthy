@@ -1,6 +1,13 @@
 {% extends "user_profile/dashboard.html" %}
+
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-  <p>Hello from add_recipe.html</p>
+<p>Add recipes here</p>
+<form id="recipeForm" method="post" enctype="multipart/form-data">
+    {{ recipe_form | crispy }}
+    {% csrf_token %}
+    <button id="submitButton" type="submit" class="btn btn-primary px-3">Submit</button>
+</form>
 {% endblock %}

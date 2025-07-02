@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "cloudinary_storage",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django_summernote",
     "cloudinary",
     "home",
@@ -64,10 +66,15 @@ INSTALLED_APPS = [
 
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/user_profile/dashboard/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/user_profile/dashboard/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/login/'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/login/"
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 
 
 MIDDLEWARE = [
@@ -79,7 +86,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'allauth.account.middleware.AccountMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "grow_healthy.urls"
@@ -134,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 
 # Internationalization
