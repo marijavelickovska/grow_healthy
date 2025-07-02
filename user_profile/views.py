@@ -32,5 +32,20 @@ def dashboard(request, filter_type=None):
     )
 
 
+def recipe_detail(request, pk):
+    queryset = Recipe.objects.all()
+    recipe = get_object_or_404(queryset, pk=pk)
+
+    context = {
+        "recipe": recipe,
+    }
+
+    return render(
+        request,
+        "user_profile/recipe_detail.html",
+        context,
+    )
+
+
 def add_recipe(request):
     return render(request, "user_profile/add_recipe.html")
