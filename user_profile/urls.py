@@ -1,9 +1,10 @@
 from django.urls import path
+from recipe import views as recipe_views
 from . import views
 
 
 urlpatterns = [
-    path('add_recipe/', views.add_recipe, name='add_recipe'),
+    path('add_recipe/', recipe_views.add_recipe, name='add_recipe'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('favourites/',
          views.dashboard, {'filter_type': 'favourites'}, name='favourites'),

@@ -45,7 +45,3 @@ def recipe_detail(request, pk):
         "user_profile/recipe_detail.html",
         context,
     )
-
-
-def add_recipe(request):
-    return render(request, "user_profile/add_recipe.html")
