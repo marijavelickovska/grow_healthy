@@ -72,7 +72,8 @@ footer {
 }
 
 .card-home-height {
-  min-height: 150px;
+  height: 150px;
+  overflow: auto;
 }
 
 #recipe-message {
@@ -111,7 +112,8 @@ footer {
 }
 
 .card-dashboard-height {
-  min-height: 150px;
+  height: 150px;
+  overflow: auto;
 }
 
 .icon {
