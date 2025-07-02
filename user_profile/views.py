@@ -5,14 +5,24 @@ from django.core.paginator import Paginator
 from recipe.models import Recipe
 
 
-def dashboard(request):
-    queryset = Recipe.objects.all()
+def dashboard(request, filter_type=None):
+    user = request.user
+
+    if filter_type == 'my':
+        queryset = Recipe.objects.filter(author=user)
+    elif filter_type == 'favourites':
+        # претпоставувам имаш поврзана релација favourites
+        queryset = Recipe.objects.filter(favourited_by__user=user)
+    else:
+        queryset = Recipe.objects.all()
+
     paginate_by = Paginator(queryset, 8)
     page_number = request.GET.get("page")
     recipes = paginate_by.get_page(page_number)
 
     context = {
         "recipes": recipes,
+        'filter_type': filter_type,
     }
 
     return render(
@@ -20,14 +30,6 @@ def dashboard(request):
         "user_profile/dashboard.html",
         context,
     )
-
-
-def my_recipes(request):
-    return render(request, "user_profile/my_recipes.html")
-
-
-def favourites(request):
-    return render(request, "user_profile/favourites.html")
 
 
 def add_recipe(request):
