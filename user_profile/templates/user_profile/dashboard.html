@@ -55,21 +55,23 @@
                 <div class="row">
                     {% for recipe in recipes %}
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="card card-dashboard my-4">
-                            <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
-                            <div class="card-body card-dashboard-height">
-                                <h5 class="card-title green">{{ recipe.title }}</h5>
-                                <p class="card-text">{{ recipe.excerpt }}</p>
+                        <a href="{% url 'recipe_detail' recipe.pk %}" class="card-link">
+                            <div class="card card-dashboard my-4">
+                                <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+                                <div class="card-body card-dashboard-height">
+                                    <h5 class="card-title green">{{ recipe.title }}</h5>
+                                    <p class="card-text">{{ recipe.excerpt }}</p>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">By {{ recipe.author }}</li>
+                                </ul>
+                                <div class="card-footer icons">
+                                    <i class="fa-regular fa-thumbs-up icon" data-type="like"></i>
+                                    <i class="fa-regular fa-comment icon" data-type="comment"></i>
+                                    <i class="fa-regular fa-bookmark icon" data-type="save"></i>
+                                </div>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">By {{ recipe.author }}</li>
-                            </ul>
-                            <div class="card-footer icons">
-                                <i class="fa-regular fa-thumbs-up icon" data-type="like"></i>
-                                <i class="fa-regular fa-comment icon" data-type="comment"></i>
-                                <i class="fa-regular fa-bookmark icon" data-type="save"></i>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                     {% if forloop.counter|divisibleby:4 %}
                 </div>

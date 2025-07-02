@@ -1,0 +1,29 @@
+{% extends "user_profile/dashboard.html" %}
+{% load static %}
+
+{% block content %}
+<div class="col-12">
+  <div class="card card-recipe-detail mb-3">
+    <div class="centered-container">
+      <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+      <h3 class="card-title green fw-bold fst-italic">{{ recipe.title }}</h3>
+    </div>
+    <div class="card-body">
+      <p class="fst-italic bold green">***Category:</p>
+      <p>
+        {% for meal in recipe.meal_type.all %}
+        {{ meal.name }}{% if not forloop.last %}, {% endif %}
+        {% empty %}
+        No meal types.
+        {% endfor %}
+      </p><hr>
+      <p class="fst-italic bold green">***Ingredients:</p>
+      <p class="card-text">{{ recipe.ingredients }}</p><hr>
+      <p class="fst-italic bold green">***Instructions:</p>
+      <p class="card-text">{{ recipe.instructions }}</p><hr>
+      <p class="card-text">Create by: {{ recipe.author }}</p>
+      <p class="card-text"><small class="text-body-secondary">{{ recipe.created_on }}</small></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

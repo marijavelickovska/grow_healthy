@@ -51,6 +51,10 @@ footer {
   color: var(--secondary-color);
 }
 
+.bold {
+  font-weight: 700;
+}
+
 #hero-image {
   background: url("../images/children-cooking.jpg") no-repeat center
     center/cover;
@@ -116,10 +120,29 @@ footer {
   overflow: auto;
 }
 
+.card-link {
+  text-decoration: none;
+}
+
 .icon {
   margin-right: 1rem;
   font-size: 20px;
   cursor: pointer;
+}
+
+/* Recipe details */
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.centered-container > .card-img-top {
+  height: 300px;
+  width: 500px;
 }
 
 /* Footer */
