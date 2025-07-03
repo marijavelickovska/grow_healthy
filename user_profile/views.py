@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -8,12 +8,13 @@ from django.core.paginator import Paginator
 from recipe.models import Recipe, Like
 
 
+@login_required
 def dashboard(request, filter_type=None):
     user = request.user
 
-    if filter_type == 'my':
+    if filter_type == "my":
         queryset = Recipe.objects.filter(author=user)
-    elif filter_type == 'favourites':
+    elif filter_type == "favourites":
         # претпоставувам имаш поврзана релација favourites
         queryset = Recipe.objects.filter(favourited_by__user=user)
     else:
@@ -25,7 +26,7 @@ def dashboard(request, filter_type=None):
 
     context = {
         "recipes": recipes,
-        'filter_type': filter_type,
+        "filter_type": filter_type,
     }
 
     return render(
@@ -35,9 +36,10 @@ def dashboard(request, filter_type=None):
     )
 
 
+@login_required
 def recipe_detail(request, pk):
     queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset, pk=pk)
+    recipe = get_object_or_404(queryset, id=pk)
 
     context = {
         "recipe": recipe,
@@ -63,9 +65,25 @@ def recipe_like(request, pk):
         messages.warning(request, f"You've already liked {recipe.title}!")
         pass
 
-    # Redirects user back to previous page if referer exists, else to dashboard
-    referer = request.META.get('HTTP_REFERER')
+    # Redirect back to the page the user came from,
+    # if exists, else to dashboard
+    referer = request.META.get("HTTP_REFERER")
     if referer:
         return redirect(referer)
     else:
-        return redirect('dashboard')
+        return redirect("dashboard")
+
+
+@login_required
+def recipe_unlike(request, pk):
+    user = request.user
+    recipe = get_object_or_404(Recipe, id=pk)
+    like = get_object_or_404(Like, user=user, recipe=recipe)
+    like.delete()
+    messages.error(request, f"You no longer like {recipe.title}!")
+
+    referer = request.META.get("HTTP_REFERER")
+    if referer:
+        return redirect(referer)
+    else:
+        return redirect("dashboard")
