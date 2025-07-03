@@ -11,8 +11,9 @@ def add_recipe(request):
             recipe.author = request.user
             recipe.save()
             recipe_form.save_m2m()
-            messages.success(request, "Recipe added successfully.")
-            return redirect('my_recipes')  
+            messages.success(request, "Recipe added successfully.",
+                             extra_tags='recipe')
+            return redirect('my_recipes')
     else:
         recipe_form = RecipeForm()
 

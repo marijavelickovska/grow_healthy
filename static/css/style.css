@@ -130,6 +130,10 @@ footer {
   cursor: pointer;
 }
 
+.alert {
+  background-color: var(--bs-success-bg-subtle);
+}
+
 /* Recipe details */
 .centered-container {
   display: flex;
