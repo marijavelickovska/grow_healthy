@@ -24,9 +24,16 @@ def dashboard(request, filter_type=None):
     page_number = request.GET.get("page")
     recipes = paginate_by.get_page(page_number)
 
+    is_liked = False
+    for recipe in recipes:
+        recipe.is_liked = Like.objects.filter(recipe=recipe).exists()
+        recipe.like_count = recipe.liked_by.count()
+
     context = {
         "recipes": recipes,
         "filter_type": filter_type,
+        "is_liked": is_liked,
+        "recipe.like_count": recipe.like_count,
     }
 
     return render(

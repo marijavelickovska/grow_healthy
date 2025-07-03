@@ -90,10 +90,12 @@
                                     <a href="{% url 'recipe_unlike' recipe.id %}">
                                         <i class="fa-solid fa-thumbs-up icon"></i>
                                     </a>
+                                    <span>{{ recipe.like_count }}</span>
                                     {% else %}
                                     <a href="{% url 'recipe_like' recipe.id %}">
                                         <i class="fa-regular fa-thumbs-up icon"></i>
                                     </a>
+                                    <span>{{ recipe.like_count }}</span>
                                     {% endif %}
                                     <i class="fa-regular fa-comment icon"></i>
                                     <i class="fa-regular fa-bookmark icon"></i>
