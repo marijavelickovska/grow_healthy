@@ -1,3 +1,4 @@
+// On DOMContentLoaded: Add event listener to cards to show a message when clicked
 document.addEventListener("DOMContentLoaded", function () {
    let cards = document.getElementsByClassName("card-home");
 
@@ -8,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//na klik na cards da se pokazuva porakata za login na home page 
+// Scroll to the section where the message is displayed and set a timeout to hide it
 function showRecipeMessage() {
     let messageDiv = document.getElementById("recipe-message");
     let joinSection = document.getElementById("join_us");
@@ -25,4 +26,5 @@ function showRecipeMessage() {
         });
     }
 }
+
 

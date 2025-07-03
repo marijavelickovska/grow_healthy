@@ -35,7 +35,7 @@
             <div class="col-12">
                 <div class="row">
                     <!-- Sub-navbar -->
-                    <div class="col-12 d-flex flex-column flex-lg-row p-0 mb-md-4">
+                    <div class="col-12 d-flex flex-column flex-md-row p-0 mb-md-4">
                         <a href="{% url 'dashboard' %}"
                             class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'dashboard' %} active{% endif %}">Dashboard</a>
                         <a href="{% url 'my_recipes' %}"
@@ -69,9 +69,9 @@
             {% block content %}
             <div class="col-12">
                 <!-- Recipe cards -->
-                <div class="row">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
                     {% for recipe in recipes %}
-                    <div class="col-12 col-sm-6 col-md-3">
+                    <div class="col-12">
                         <a href="{% url 'recipe_detail' recipe.pk %}" class="card-link">
                             <div class="card card-dashboard my-4">
                                 <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
@@ -90,14 +90,10 @@
                             </div>
                         </a>
                     </div>
-                    {% if forloop.counter|divisibleby:4 %}
-                </div>
-                <div class="row text-center">
-                    {% endif %}
                     {% endfor %}
                 </div>
                 <!-- Pagination -->
-                <div class="row my-4">
+                <div class="row mt-5">
                     <div class="col-12">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
@@ -123,6 +119,7 @@
                 </div>
                 {% endblock %}
             </div>
+        </div>>
     </section>
 </div>
 {% endblock %}
