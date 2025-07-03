@@ -54,14 +54,17 @@
             <div class="row">
                 <div class="col-12">
                     {% if messages %}
-                    {% for message in messages %}
-                    {% if 'recipe' in message.tags %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
+                    <section id="alerts">
+                        {% for msg in messages %}
+                        <!-- all django message tags mirror bootstrap, except error/danger -->
+                        <aside
+                            class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} alert-dismissible fade show rounded-0 text-center"
+                            role="alert">
+                            {{ msg }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </aside>
+                        {% endfor %}
+                    </section>
                     {% endif %}
                 </div>
             </div>
@@ -83,9 +86,11 @@
                                     <li class="list-group-item">By {{ recipe.author }}</li>
                                 </ul>
                                 <div class="card-footer icons">
-                                    <i class="fa-regular fa-thumbs-up icon" data-type="like"></i>
-                                    <i class="fa-regular fa-comment icon" data-type="comment"></i>
-                                    <i class="fa-regular fa-bookmark icon" data-type="save"></i>
+                                    <a href="{% url 'recipe_like' recipe.id %}">
+                                        <i class="fa-regular fa-thumbs-up icon"></i>
+                                    </a>
+                                    <i class="fa-regular fa-comment icon"></i>
+                                    <i class="fa-regular fa-bookmark icon"></i>
                                 </div>
                             </div>
                         </a>

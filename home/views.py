@@ -17,6 +17,12 @@ class Home(generic.ListView):
     **Template:**
 
     :template:`home/home.html`
+
+    **Method override:**
+
+    The `dispatch` method is overridden to check if the user is authenticated.
+    If so, it redirects the user to the dashboard instead of showing the home page.
+    Otherwise, it proceeds with the normal request dispatching process.
     """
 
     queryset = Recipe.objects.all()
