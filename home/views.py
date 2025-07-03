@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from recipe.models import Recipe
 
@@ -23,3 +23,8 @@ class Home(generic.ListView):
     template_name = "home/home.html"
     paginate_by = 8
     context_object_name = 'recipe_list'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('dashboard')
+        return super().dispatch(request, *args, **kwargs)
