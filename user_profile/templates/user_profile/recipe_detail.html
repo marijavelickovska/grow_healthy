@@ -30,6 +30,14 @@
                 <p class="card-text">Create by: {{ recipe.author }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ recipe.created_on }}</small></p>
             </div>
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    {% if user.is_authenticated and comment.author == user %}
+                    <a href="#" class="btn btn-primary link-size"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
         <div class="d-flex justify-content-end">
             <a href="#add_comment" class="btn btn-success">Add a comment</a>
@@ -49,12 +57,6 @@
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
                 <p class="text-body-secondary">{{ comment.created_on }}</p>
-                <div>
-                    {% if user.is_authenticated and comment.author == user %}
-                    <a href="#" class="btn btn-primary link-size"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
-                    {% endif %}
-                </div>
             </div>
         </div>
         {% empty %}
@@ -80,5 +82,4 @@
         </div>
     </div>
 </section>
-
 {% endblock %}

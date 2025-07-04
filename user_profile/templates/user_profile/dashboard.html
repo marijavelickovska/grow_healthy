@@ -99,7 +99,16 @@
                                 <span>{{ recipe.like_count }}</span>
                                 {% endif %}
                                 <i class="fa-regular fa-comment icon"></i>
+                                {% if user.is_authenticated and recipe.author == user and filter_type == 'my' %}
+                                <hr>
+                                <div class=" d-flex justify-content-end">
+                                    <a href="#" class="btn btn-primary link-size"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
+                                </div>
+                                {% else %}
                                 <i class="fa-regular fa-bookmark icon"></i>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

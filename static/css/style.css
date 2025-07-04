@@ -147,6 +147,11 @@ h1 {
   gap: 1rem;
 }
 
+.card-recipe-detail {
+  border-radius: 15px;
+  box-shadow: 5px 10px 15px gray;
+}
+
 .link-size {
   font-size: 0.8rem;
 }
