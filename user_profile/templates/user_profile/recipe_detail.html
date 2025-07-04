@@ -1,29 +1,84 @@
 {% extends "user_profile/dashboard.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="col-12">
-  <div class="card card-recipe-detail mb-3">
-    <div class="centered-container">
-      <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
-      <h3 class="card-title green fw-bold fst-italic">{{ recipe.title }}</h3>
+<!-- Display Recipe Details -->
+<section class="row d-flex justify-content-center mt-4">
+    <div class="col-12 col-sm-10 col-md-8 my-4">
+        <div class="card card-recipe-detail mb-3">
+            <div class="centered-container">
+                <img src="{{ recipe.image.url }}" class="card-img-top img-fluid" alt="{{ recipe.title }}">
+                <h3 class="card-title green fw-bold fst-italic">{{ recipe.title }}</h3>
+            </div>
+            <div class="card-body">
+                <p class="fst-italic bold green">***Category:</p>
+                <p>
+                    {% for meal in recipe.meal_type.all %}
+                    {{ meal.name }}{% if not forloop.last %}, {% endif %}
+                    {% empty %}
+                    No meal types.
+                    {% endfor %}
+                </p>
+                <hr>
+                <p class="fst-italic bold green">***Ingredients:</p>
+                <p class="card-text">{{ recipe.ingredients }}</p>
+                <hr>
+                <p class="fst-italic bold green">***Instructions:</p>
+                <p class="card-text">{{ recipe.instructions }}</p>
+                <hr>
+                <p class="card-text">Create by: {{ recipe.author }}</p>
+                <p class="card-text"><small class="text-body-secondary">{{ recipe.created_on }}</small></p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <a href="#add_comment" class="btn btn-success">Add a comment</a>
+        </div>
     </div>
-    <div class="card-body">
-      <p class="fst-italic bold green">***Category:</p>
-      <p>
-        {% for meal in recipe.meal_type.all %}
-        {{ meal.name }}{% if not forloop.last %}, {% endif %}
+</section>
+
+<section class="row d-flex justify-content-center">
+    <!-- Display Comments -->
+    <div class="col-12 col-sm-10 col-md-8 my-4">
+        <h3>Comments:</h3>
+        {% for comment in comments %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <p id="comment{{ comment.id }}" class="card-text">{{ comment.body }}</p>
+                <p>By: {{ comment.author }}</p>
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+                <p class="text-body-secondary">{{ comment.created_on }}</p>
+                <div>
+                    {% if user.is_authenticated and comment.author == user %}
+                    <a href="#" class="btn btn-primary link-size"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         {% empty %}
-        No meal types.
+        <h6 class="text-muted">No comments yet.</h6>
         {% endfor %}
-      </p><hr>
-      <p class="fst-italic bold green">***Ingredients:</p>
-      <p class="card-text">{{ recipe.ingredients }}</p><hr>
-      <p class="fst-italic bold green">***Instructions:</p>
-      <p class="card-text">{{ recipe.instructions }}</p><hr>
-      <p class="card-text">Create by: {{ recipe.author }}</p>
-      <p class="card-text"><small class="text-body-secondary">{{ recipe.created_on }}</small></p>
     </div>
-  </div>
-</div>
+    <!-- Create new comment -->
+    <div id="add_comment" class="col-12 col-sm-10 col-md-8 my-4">
+        <h3>Add a comment:</h3>
+        <div class="card">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <p>Posting as: {{ user.username }}</p>
+                <form id="commentForm" method="post">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-success px-5">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a comment</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

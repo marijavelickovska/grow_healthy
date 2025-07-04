@@ -147,9 +147,8 @@ h1 {
   gap: 1rem;
 }
 
-.centered-container > .card-img-top {
-  height: 300px;
-  width: 500px;
+.link-size {
+  font-size: 0.8rem;
 }
 
 /* Footer */
