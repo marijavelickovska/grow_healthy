@@ -3,9 +3,9 @@ from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
-from recipe.models import Recipe, Like
+from recipe.models import Recipe, Like, Comment
+from recipe.forms import CommentForm
 
 
 @login_required
@@ -47,8 +47,27 @@ def recipe_detail(request, pk):
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, id=pk)
 
+    comments = recipe.comments.all().order_by("-created_on")
+    comment_count = recipe.comments.all().count()
+
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.recipe = recipe
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS, "Comment successfully submitted"
+            )
+
+    comment_form = CommentForm()
+
     context = {
         "recipe": recipe,
+        "comments": comments,
+        "comment_count": comment_count,
+        "comment_form": comment_form,
     }
 
     return render(

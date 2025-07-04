@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe
+from .models import Recipe, Comment
 
 
 class RecipeForm(forms.ModelForm):
@@ -21,3 +21,23 @@ class RecipeForm(forms.ModelForm):
         }
 
 
+class CommentForm(forms.ModelForm):
+    """
+    Form class for users to comment on a recipe
+    """
+    class Meta:
+        """
+        Specify the django model and the fields
+        """
+        model = Comment
+        fields = ['body']
+        labels = {
+            'body': '',  
+        }
+        widgets = {
+            'body': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 4,
+                'placeholder': 'Write your comment here...'
+            }),
+        }
