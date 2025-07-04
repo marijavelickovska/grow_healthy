@@ -17,5 +17,7 @@ class RecipeForm(forms.ModelForm):
             'ingredients': forms.Textarea(attrs={'rows': 3}),
             'instructions': forms.Textarea(attrs={'rows': 10}),
             'excerpt': forms.Textarea(attrs={'rows': 3}),
-            'meal_type': forms.CheckboxSelectMultiple(), 
+            'meal_type': forms.CheckboxSelectMultiple(),
         }
+
+

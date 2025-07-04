@@ -4,10 +4,17 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<p>Add recipes here</p>
-<form id="recipeForm" method="post" enctype="multipart/form-data">
-    {{ recipe_form | crispy }}
-    {% csrf_token %}
-    <button id="submitButton" type="submit" class="btn btn-primary px-3">Submit</button>
-</form>
+<section class="row d-flex justify-content-center">
+    <div class="col-10 col-md-8 my-4">
+        <div class="fst-italic green mb-5 text-center">
+            <p class="fs-5">Have a great recipe? Share it with us!</p>
+            <h2>Create a new recipe here</h2>
+        </div>
+        <form id="recipeForm" method="post" enctype="multipart/form-data">
+            {{ recipe_form | crispy }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success px-5">Submit</button>
+        </form>
+    </div>
+</section>
 {% endblock %}
