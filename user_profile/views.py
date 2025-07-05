@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -27,12 +27,11 @@ def dashboard(request, filter_type=None):
     for recipe in recipes:
         recipe.is_liked = Like.objects.filter(user=request.user, recipe=recipe).exists()
         recipe.like_count = recipe.liked_by.count()
+        recipe.comment_count = recipe.comments.all().count()
 
     context = {
         "recipes": recipes,
         "filter_type": filter_type,
-        "is_liked": recipe.is_liked,
-        "like_count": recipe.like_count,
     }
 
     return render(
@@ -112,3 +111,26 @@ def recipe_unlike(request, pk):
         return redirect(referer)
     else:
         return redirect("dashboard")
+    
+
+@login_required
+def comment_edit(request, recipe_id, comment_id):
+    if request.method == "POST":
+
+        recipe = get_object_or_404(Recipe, id=recipe_id)
+        comment = get_object_or_404(Comment, id=comment_id)
+        comment_form = CommentForm(request.POST, instance=comment)
+
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.author = request.user
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS, 'Comment successfully updated.')
+        else:
+            messages.add_message(
+                request, messages.ERROR,
+                'Error updating comment. Please try again.')
+           
+    return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))

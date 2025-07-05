@@ -37,7 +37,7 @@
                     <!-- Sub-navbar -->
                     <div class="col-12 d-flex flex-column flex-md-row p-0 mb-md-4">
                         <a href="{% url 'dashboard' %}"
-                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'dashboard' %} active{% endif %}">Dashboard</a>
+                            class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'dashboard' or request.resolver_match.url_name == 'recipe_detail' %} active{% endif %}">Dashboard</a>
                         <a href="{% url 'my_recipes' %}"
                             class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'my_recipes' %} active{% endif %}">My
                             Recipes</a>
@@ -98,11 +98,14 @@
                                 </a>
                                 <span>{{ recipe.like_count }}</span>
                                 {% endif %}
-                                <i class="fa-regular fa-comment icon"></i>
+                                <a href="{% url 'recipe_detail' recipe.id %}#comments" class="link" style="color: green;">
+                                    <i class="fa-regular fa-comment icon"></i>
+                                </a>
+                                <span>{{ recipe.comment_count }}</span>
                                 {% if user.is_authenticated and recipe.author == user and filter_type == 'my' %}
                                 <hr>
                                 <div class=" d-flex justify-content-end">
-                                    <a href="#" class="btn btn-primary link-size"><i
+                                    <a href="#" class="btn btn-primary link-size me-2"><i
                                             class="fa-solid fa-pen-to-square"></i></a>
                                     <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
                                 </div>
