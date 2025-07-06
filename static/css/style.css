@@ -152,7 +152,8 @@ h1 {
   box-shadow: 5px 10px 15px gray;
 }
 
-.link-size {
+.link-size,
+.icon-size {
   font-size: 0.8rem;
 }
 
