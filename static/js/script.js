@@ -3,6 +3,10 @@ const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
+const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteConfirm = document.getElementById("deleteConfirm");
+
 
 // On DOMContentLoaded: Add event listener to cards to show a message when clicked
 document.addEventListener("DOMContentLoaded", function () {
@@ -42,6 +46,16 @@ for (let button of editButtons) {
     commentText.value = commentContent;
     submitButton.innerText = "Update";
     commentForm.setAttribute("action", `/user_profile/recipe/${recipeId}/edit_comment/${commentId}/`);
+  });
+}
+
+
+for (let button of deleteButtons) {
+  button.addEventListener("click", (e) => {
+    let commentId = e.currentTarget.getAttribute("data-comment_id");
+    let recipeId = e.currentTarget.getAttribute("data-recipe_id");
+    deleteConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`; 
+    deleteModal.show();
   });
 }
 
