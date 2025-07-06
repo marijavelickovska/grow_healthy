@@ -46,6 +46,12 @@ for (let button of editButtons) {
     commentText.value = commentContent;
     submitButton.innerText = "Update";
     commentForm.setAttribute("action", `/user_profile/recipe/${recipeId}/edit_comment/${commentId}/`);
+
+    // Scroll to the add_comment section
+    const commentSection = document.getElementById("add_comment");
+    if (commentSection) {
+      commentSection.scrollIntoView({ behavior: "smooth" });
+    }
   });
 }
 
