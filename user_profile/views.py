@@ -46,7 +46,7 @@ def recipe_detail(request, pk):
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, id=pk)
 
-    comments = recipe.comments.all().order_by("-created_on")
+    comments = recipe.comments.all().order_by("-updated_on")
     comment_count = recipe.comments.all().count()
 
     if request.method == "POST":
@@ -111,7 +111,7 @@ def recipe_unlike(request, pk):
         return redirect(referer)
     else:
         return redirect("dashboard")
-    
+
 
 @login_required
 def comment_edit(request, recipe_id, comment_id):
@@ -132,5 +132,20 @@ def comment_edit(request, recipe_id, comment_id):
             messages.add_message(
                 request, messages.ERROR,
                 'Error updating comment. Please try again.')
-           
+
+    return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))
+
+
+@login_required
+def comment_delete(request, recipe_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(
+            request, messages.SUCCESS, 'Comment successfully deleted!')
+    else:
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!')
+
     return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))
