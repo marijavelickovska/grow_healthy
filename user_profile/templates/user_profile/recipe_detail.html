@@ -30,11 +30,14 @@
                 <p class="card-text">Create by: {{ recipe.author }}</p>
                 <p class="card-text"><small class="text-body-secondary">{{ recipe.created_on }}</small></p>
             </div>
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-end mb-2">
                 <div>
-                    {% if user.is_authenticated and comment.author == user %}
-                    <a href="#" class="btn btn-primary link-size"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="#" class="btn btn-danger link-size"><i class="fa-solid fa-trash"></i></a>
+                    {% if user.is_authenticated and recipe.author == user %}
+                    <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-edit-recipe btn-primary link-size me-2">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a href="#" class="btn btn-delete-recipe btn-danger link-size me-2"
+                        data-recipe_id="{{ recipe.id }}"><i class="fa-solid fa-trash"></i></a>
                     {% endif %}
                 </div>
             </div>
@@ -60,11 +63,11 @@
                 <p class="text-body-secondary">{{ comment.created_on }}</p>
                 {% if user.is_authenticated and comment.author == user %}
                 <div>
-                    <button class="btn btn-edit btn-primary icon-size me-2" data-comment_id="{{ comment.id }}"
+                    <button class="btn btn-edit-comment btn-primary icon-size me-2" data-comment_id="{{ comment.id }}"
                         data-recipe_id="{{ comment.recipe.id }}">
                         <i class="fa-solid fa-pen-to-square"></i>
                     </button>
-                    <button class="btn btn-delete btn-danger icon-size" data-comment_id="{{ comment.id }}"
+                    <button class="btn btn-delete-comment btn-danger icon-size" data-comment_id="{{ comment.id }}"
                         data-recipe_id="{{ comment.recipe.id }}">
                         <i class="fa-solid fa-trash"></i>
                     </button>
@@ -86,7 +89,7 @@
                 <form id="commentForm" method="post">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-success px-5">Submit</button>
+                    <button id="submitCommentButton" type="submit" class="btn btn-success px-5">Submit</button>
                 </form>
                 {% else %}
                 <p>Log in to leave a comment</p>
