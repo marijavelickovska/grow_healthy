@@ -59,3 +59,18 @@ def edit_recipe(request, recipe_id):
         'user_profile/add_recipe.html',
         context
         )
+
+
+@login_required
+def delete_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+
+    if recipe.author == request.user:
+        recipe.delete()
+        messages.add_message(
+            request, messages.SUCCESS, 'Recipe successfully deleted!')
+    else:
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own recipes!')
+
+    return redirect('my_recipes')

@@ -7,6 +7,10 @@ const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment
 const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteCommentConfirm = document.getElementById("deleteConfirm");
 
+const deleteRecipeButtons = document.getElementsByClassName("btn-delete-recipe");
+const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteRecipeConfirm = document.getElementById("deleteConfirm");
+
 
 // On DOMContentLoaded: Add event listener to cards to show a message when clicked
 document.addEventListener("DOMContentLoaded", function () {
@@ -61,6 +65,15 @@ for (let button of deleteCommentButtons) {
     let recipeId = e.currentTarget.getAttribute("data-recipe_id");
     deleteCommentConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`; 
     deleteCommentModal.show();
+  });
+}
+
+
+for (let button of deleteRecipeButtons) {
+  button.addEventListener("click", (e) => {
+    let recipeId = e.currentTarget.getAttribute("data-recipe_id");
+    deleteRecipeConfirm.href = `/user_profile/delete_recipe/${recipeId}/`; 
+    deleteRecipeModal.show();
   });
 }
 
