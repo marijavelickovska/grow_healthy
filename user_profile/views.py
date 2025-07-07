@@ -180,8 +180,12 @@ def remove_from_favourites(request, recipe_id):
 
     if favourite:
         favourite.delete()
-        messages.success(request, "Recipe removed from favourites.")
+        messages.success(request, "Recipe successfully removed from favourites.")
     else:
         messages.info(request, "This recipe was not in your favourites.")
 
-    return redirect("dashboard")
+    referer = request.META.get("HTTP_REFERER")
+    if referer:
+        return redirect(referer)
+    else:
+        return redirect("dashboard")
