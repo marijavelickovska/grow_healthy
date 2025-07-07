@@ -3,14 +3,10 @@ const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitCommentButton = document.getElementById("submitCommentButton");
 
-const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
-const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteCommentConfirm = document.getElementById("deleteConfirm");
-
-const deleteRecipeButtons = document.getElementsByClassName("btn-delete-recipe");
-const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteRecipeConfirm = document.getElementById("deleteConfirm");
-
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteConfirm = document.getElementById("deleteConfirm");
+const deleteModalBody = document.getElementById("deleteModalBody");
+const deleteModalTitle = document.getElementById("deleteModalTitle");
 
 // On DOMContentLoaded: Add event listener to cards to show a message when clicked
 document.addEventListener("DOMContentLoaded", function () {
@@ -59,21 +55,31 @@ for (let button of editCommentButtons) {
 }
 
 
+const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
 for (let button of deleteCommentButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.currentTarget.getAttribute("data-comment_id");
     let recipeId = e.currentTarget.getAttribute("data-recipe_id");
-    deleteCommentConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`; 
-    deleteCommentModal.show();
+    
+    deleteModalTitle.innerText = "Delete comment?";
+    deleteModalBody.innerText = "Are you sure you want to delete your comment? This action cannot be undone.";
+    deleteConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`;
+    
+    deleteModal.show();
   });
 }
 
 
+const deleteRecipeButtons = document.getElementsByClassName("btn-delete-recipe");
 for (let button of deleteRecipeButtons) {
   button.addEventListener("click", (e) => {
     let recipeId = e.currentTarget.getAttribute("data-recipe_id");
-    deleteRecipeConfirm.href = `/user_profile/delete_recipe/${recipeId}/`; 
-    deleteRecipeModal.show();
+
+    deleteModalTitle.innerText = "Delete recipe?";
+    deleteModalBody.innerText = "Are you sure you want to delete this recipe? This action cannot be undone.";
+    deleteConfirm.href = `/user_profile/delete_recipe/${recipeId}/`;
+
+    deleteModal.show();
   });
 }
 
