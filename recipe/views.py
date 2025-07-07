@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from .models import Recipe
 from .forms import RecipeForm
 
 
+@login_required
 def add_recipe(request):
     if request.method == 'POST':
         recipe_form = RecipeForm(request.POST, request.FILES)
@@ -18,6 +22,7 @@ def add_recipe(request):
 
     context = {
         "recipe_form": recipe_form,
+        'is_edit': False
     }
 
     return render(
@@ -25,3 +30,32 @@ def add_recipe(request):
         'user_profile/add_recipe.html',
         context,
     )
+
+
+@login_required
+def edit_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+
+    # Само авторот на рецептот може да го уредува
+    if recipe.author != request.user:
+        return HttpResponseForbidden
+        ("You are not allowed to edit this recipe.")
+
+    if request.method == 'POST':
+        recipe_form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if recipe_form.is_valid():
+            recipe_form.save()
+            return redirect('recipe_detail', pk=recipe.id)
+    else:
+        recipe_form = RecipeForm(instance=recipe)
+
+    context = {
+        "recipe_form": recipe_form,
+        'is_edit': True
+    }
+
+    return render(
+        request,
+        'user_profile/add_recipe.html',
+        context
+        )

@@ -1,11 +1,11 @@
-const editButtons = document.getElementsByClassName("btn-edit");
+const editCommentButtons = document.getElementsByClassName("btn-edit-comment");
 const commentText = document.getElementById("id_body"); 
 const commentForm = document.getElementById("commentForm");
-const submitButton = document.getElementById("submitButton");
+const submitCommentButton = document.getElementById("submitCommentButton");
 
-const deleteButtons = document.getElementsByClassName("btn-delete");
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteConfirm = document.getElementById("deleteConfirm");
+const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
+const deleteCommentModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteCommentConfirm = document.getElementById("deleteConfirm");
 
 
 // On DOMContentLoaded: Add event listener to cards to show a message when clicked
@@ -19,11 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Scroll to the section where the message is displayed and set a timeout to hide it
+// Scroll to the section where the message for login and register are displayed and set a timeout to hide it
 function showRecipeMessage() {
     let messageDiv = document.getElementById("recipe-message");
     let joinSection = document.getElementById("join_us");
-
     messageDiv.style.display = "block";
 
     setTimeout(() => {
@@ -38,13 +37,13 @@ function showRecipeMessage() {
 }
 
 
-for (let button of editButtons) {
+for (let button of editCommentButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.currentTarget.getAttribute("data-comment_id");
     let recipeId = e.currentTarget.getAttribute("data-recipe_id");
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
     commentText.value = commentContent;
-    submitButton.innerText = "Update";
+    submitCommentButton.innerText = "Update";
     commentForm.setAttribute("action", `/user_profile/recipe/${recipeId}/edit_comment/${commentId}/`);
 
     // Scroll to the add_comment section
@@ -56,12 +55,12 @@ for (let button of editButtons) {
 }
 
 
-for (let button of deleteButtons) {
+for (let button of deleteCommentButtons) {
   button.addEventListener("click", (e) => {
     let commentId = e.currentTarget.getAttribute("data-comment_id");
     let recipeId = e.currentTarget.getAttribute("data-recipe_id");
-    deleteConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`; 
-    deleteModal.show();
+    deleteCommentConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`; 
+    deleteCommentModal.show();
   });
 }
 

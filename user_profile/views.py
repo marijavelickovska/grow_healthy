@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.core.paginator import Paginator
 from recipe.models import Recipe, Like, Comment
-from recipe.forms import CommentForm
+from recipe.forms import CommentForm, RecipeForm
 
 
 @login_required
@@ -25,7 +25,8 @@ def dashboard(request, filter_type=None):
     recipes = paginate_by.get_page(page_number)
 
     for recipe in recipes:
-        recipe.is_liked = Like.objects.filter(user=request.user, recipe=recipe).exists()
+        recipe.is_liked = Like.objects.filter(
+            user=request.user, recipe=recipe).exists()
         recipe.like_count = recipe.liked_by.count()
         recipe.comment_count = recipe.comments.all().count()
 
@@ -89,8 +90,8 @@ def recipe_like(request, pk):
         messages.warning(request, f"You've already liked {recipe.title}!")
         pass
 
-    # Redirect back to the page the user came from,
-    # if exists, else to dashboard
+    # Redirect back to the page the user came from, if exists,
+    # else to dashboard
     referer = request.META.get("HTTP_REFERER")
     if referer:
         return redirect(referer)
