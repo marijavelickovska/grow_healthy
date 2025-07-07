@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
-from recipe.models import Recipe, Like, Comment
-from recipe.forms import CommentForm, RecipeForm
+from recipe.models import Recipe, Like, Comment, Favourite
+from recipe.forms import CommentForm
 
 
 @login_required
@@ -15,8 +15,7 @@ def dashboard(request, filter_type=None):
     if filter_type == "my":
         queryset = Recipe.objects.filter(author=user)
     elif filter_type == "favourites":
-        # претпоставувам имаш поврзана релација favourites
-        queryset = Recipe.objects.filter(favourited_by__user=user)
+        queryset = Recipe.objects.filter(favourited_by__user=user).distinct()
     else:
         queryset = Recipe.objects.all()
 
@@ -40,6 +39,25 @@ def dashboard(request, filter_type=None):
         "user_profile/dashboard.html",
         context,
     )
+
+
+@login_required
+def add_to_favourites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+
+    if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
+        messages.add_message(
+                request, messages.SUCCESS, 
+                "This recipe is already in your favourites."
+            )
+    else:
+        Favourite.objects.create(user=request.user, recipe=recipe)
+        messages.add_message(
+                request, messages.SUCCESS,
+                "Recipe successfully added to favourites."
+            )
+
+    return redirect("dashboard")
 
 
 @login_required

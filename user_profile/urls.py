@@ -11,8 +11,12 @@ urlpatterns = [
          recipe_views.delete_recipe, name='delete_recipe'),
     path("dashboard/", views.dashboard, name="dashboard"),
     path(
-        "favourites/",
+        "favourite/",
         views.dashboard, {"filter_type": "favourites"}, name="favourites"
+    ),
+    path(
+        "favourite/<int:recipe_id>",
+        views.add_to_favourites, name="add_to_favourites"
     ),
     path("my_recipes/",
          views.dashboard, {"filter_type": "my"}, name="my_recipes"),
