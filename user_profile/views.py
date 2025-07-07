@@ -29,7 +29,7 @@ def dashboard(request, filter_type=None):
         recipe.like_count = recipe.liked_by.count()
         recipe.comment_count = recipe.comments.all().count()
         recipe.is_favourite = Favourite.objects.filter(
-        user=request.user, recipe=recipe).exists()
+            user=request.user, recipe=recipe).exists()
 
     context = {
         "recipes": recipes,
@@ -41,25 +41,6 @@ def dashboard(request, filter_type=None):
         "user_profile/dashboard.html",
         context,
     )
-
-
-@login_required
-def add_to_favourites(request, recipe_id):
-    recipe = get_object_or_404(Recipe, id=recipe_id)
-
-    if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
-        messages.add_message(
-                request, messages.SUCCESS, 
-                "This recipe is already in your favourites."
-            )
-    else:
-        Favourite.objects.create(user=request.user, recipe=recipe)
-        messages.add_message(
-                request, messages.SUCCESS,
-                "Recipe successfully added to favourites."
-            )
-
-    return redirect("dashboard")
 
 
 @login_required
@@ -170,3 +151,37 @@ def comment_delete(request, recipe_id, comment_id):
             request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))
+
+
+@login_required
+def add_to_favourites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+
+    if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
+        messages.add_message(
+                request, messages.SUCCESS, 
+                "This recipe is already in your favourites."
+            )
+    else:
+        Favourite.objects.create(user=request.user, recipe=recipe)
+        messages.add_message(
+                request, messages.SUCCESS,
+                "Recipe successfully added to favourites."
+            )
+
+    return redirect("dashboard")
+
+
+@login_required
+def remove_from_favourites(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    favourite = Favourite.objects.filter(
+        user=request.user, recipe=recipe).first()
+
+    if favourite:
+        favourite.delete()
+        messages.success(request, "Recipe removed from favourites.")
+    else:
+        messages.info(request, "This recipe was not in your favourites.")
+
+    return redirect("dashboard")
