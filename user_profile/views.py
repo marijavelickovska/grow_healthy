@@ -28,6 +28,8 @@ def dashboard(request, filter_type=None):
             user=request.user, recipe=recipe).exists()
         recipe.like_count = recipe.liked_by.count()
         recipe.comment_count = recipe.comments.all().count()
+        recipe.is_favourite = Favourite.objects.filter(
+        user=request.user, recipe=recipe).exists()
 
     context = {
         "recipes": recipes,

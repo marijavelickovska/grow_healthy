@@ -103,10 +103,16 @@
                                     <i class="fa-regular fa-comment icon"></i>
                                 </a>
                                 <span>{{ recipe.comment_count }}</span>
-                                {% if filter_type != 'my' and filter_type != 'favourites' %}
-                                <a href="{% url 'add_to_favourites' recipe.id %}" class="link">
-                                    <i class="fa-regular fa-bookmark icon"></i>
-                                </a>
+                                {% if filter_type != 'my' %}
+                                    {% if recipe.is_favourite %}
+                                    <a href="{% url 'add_to_favourites' recipe.id %}" class="link">
+                                        <i class="fa-solid fa-bookmark icon"></i>
+                                    </a>
+                                    {% else %}
+                                    <a href="{% url 'add_to_favourites' recipe.id %}" class="link">
+                                        <i class="fa-regular fa-bookmark icon"></i>
+                                    </a>
+                                    {% endif %}
                                 {% endif %}
                             </div>
                         </div>
