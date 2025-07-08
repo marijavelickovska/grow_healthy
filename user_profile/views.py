@@ -6,12 +6,15 @@ from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from recipe.models import Recipe, Like, Comment, Favourite
 from recipe.forms import CommentForm
+from .models import Profile
+from .forms import ProfileForm
 
 
 @login_required
 def dashboard(request, filter_type=None):
     user = request.user
 
+    # Recipes
     if filter_type == "my":
         queryset = Recipe.objects.filter(author=user)
     elif filter_type == "favourites":
@@ -31,9 +34,23 @@ def dashboard(request, filter_type=None):
         recipe.is_favourite = Favourite.objects.filter(
             user=request.user, recipe=recipe).exists()
 
+    # Profile
+    profile = Profile.objects.get(user=user)
+
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, "Profile updated successfully.")
+            return redirect('dashboard') 
+    else:
+        profile_form = ProfileForm(instance=profile)
+
     context = {
         "recipes": recipes,
         "filter_type": filter_type,
+        "profile_form": profile_form,
+        "profile": profile,
     }
 
     return render(
