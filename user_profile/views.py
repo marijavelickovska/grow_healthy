@@ -159,7 +159,7 @@ def add_to_favourites(request, recipe_id):
 
     if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
         messages.add_message(
-                request, messages.SUCCESS, 
+                request, messages.INFO,
                 "This recipe is already in your favourites."
             )
     else:
@@ -180,7 +180,7 @@ def remove_from_favourites(request, recipe_id):
 
     if favourite:
         favourite.delete()
-        messages.success(request, "Recipe successfully removed from favourites.")
+        messages.error(request, "Recipe removed from favourites.")
     else:
         messages.info(request, "This recipe was not in your favourites.")
 
