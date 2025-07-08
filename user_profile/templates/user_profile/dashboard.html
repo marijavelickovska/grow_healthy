@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 
 {% block main_class %}container-fluid{% endblock %}
@@ -10,21 +11,28 @@
 <div class="row">
     <!-- Sidebar -->
     <aside class="col-12 col-md-3 text-center">
-        <form id="profileForm" class="my-4">
+        <form id="profileForm" class="my-4" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3 text-center">
+                {% if profile.image %}
+                <img src="{{ profile.image.url }}" alt="Profile image" class="profile-img-preview">
+                {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="Default profile image" class="profile-img-preview">
+                {% endif %}
+                <div class="d-none">
+                    {{ profile_form.image }}
+                </div>
+            </div>
             <div class="mb-3">
-                <img src="{% static 'images/default.jpg'%}" alt="Profile image" class="mb-2 profile-img-preview">
-                <input type="file" class="form-control d-none" id="profileImgInput" accept="image/*">
-            </div>
-            <div class="mb-2">
-                <input type="text" class="form-control text-center" id="nameInput" value="Username" disabled />
+                {{ profile_form.name|as_crispy_field }}
             </div>
             <div class="mb-3">
-                <textarea class="form-control text-center" id="aboutInput" rows="3"
-                    disabled>Something about you</textarea>
+                {{ profile_form.about|as_crispy_field }}
             </div>
-            <div>
-                <button type="button" class="btn btn-outline-primary btn-sm" id="editBtn">Edit</button>
-                <button type="submit" class="btn btn-success btn-sm d-none" id="saveBtn">Save</button>
+            <div class="mt-4">
+                <button type="button" class="btn btn-outline-primary btn-sm py-0 px-5" id="editBtn">Edit</button>
+                <button type="submit" class="btn btn-success btn-sm d-none py-0 px-5" id="saveBtn">Save</button>
             </div>
         </form>
     </aside>
@@ -104,15 +112,15 @@
                                 </a>
                                 <span>{{ recipe.comment_count }}</span>
                                 {% if filter_type != 'my' %}
-                                    {% if recipe.is_favourite %}
-                                    <a href="{% url 'remove_from_favourites' recipe.id %}" class="link">
-                                        <i class="fa-solid fa-bookmark icon"></i>
-                                    </a>
-                                    {% else %}
-                                    <a href="{% url 'add_to_favourites' recipe.id %}" class="link">
-                                        <i class="fa-regular fa-bookmark icon"></i>
-                                    </a>
-                                    {% endif %}
+                                {% if recipe.is_favourite %}
+                                <a href="{% url 'remove_from_favourites' recipe.id %}" class="link">
+                                    <i class="fa-solid fa-bookmark icon"></i>
+                                </a>
+                                {% else %}
+                                <a href="{% url 'add_to_favourites' recipe.id %}" class="link">
+                                    <i class="fa-regular fa-bookmark icon"></i>
+                                </a>
+                                {% endif %}
                                 {% endif %}
                             </div>
                         </div>
