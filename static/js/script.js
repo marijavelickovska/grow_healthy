@@ -21,6 +21,29 @@ function showRecipeMessage() {
 }
 
 
+console.log("JS loaded");
+
+const editBtn = document.getElementById("editBtn");
+const saveBtn = document.getElementById("saveBtn");
+const nameInput = document.getElementById("nameInput");
+const aboutInput = document.getElementById("aboutInput");
+const imageInput = document.getElementById("profileImgInput");
+
+editBtn.addEventListener("click", function () {
+	console.log("Edit clicked");
+    // Enable the inputs
+    nameInput.removeAttribute("disabled");
+    aboutInput.removeAttribute("disabled");
+    imageInput.classList.remove("d-none");
+
+    // Show the save button
+    saveBtn.classList.remove("d-none");
+
+    // Hide the edit button
+    editBtn.classList.add("d-none");
+});
+
+
 const editCommentButtons = document.getElementsByClassName("btn-edit-comment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
