@@ -13,7 +13,6 @@
     <aside class="col-12 col-md-3 text-center">
         <form id="profileForm" class="my-4" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-
             <div class="mb-3 text-center">
                 {% if profile.image %}
                 <img src="{{ profile.image.url }}" alt="Profile image" class="profile-img-preview">
@@ -36,7 +35,6 @@
             </div>
         </form>
     </aside>
-
     <!-- Main content -->
     <section class="col-12 col-md-9">
         <div class="row">
@@ -97,7 +95,7 @@
                             <div class="card-footer icons">
                                 {% if recipe.is_liked %}
                                 <a href="{% url 'recipe_unlike' recipe.id %}" class="link">
-                                    <i class="fa-solid fa-thumbs-up icon"></i>
+                                    <i class="fa-solid fa-thumbs-up icon icon-like"></i>
                                 </a>
                                 <span>{{ recipe.like_count }}</span>
                                 {% else %}
@@ -106,15 +104,14 @@
                                 </a>
                                 <span>{{ recipe.like_count }}</span>
                                 {% endif %}
-                                <a href="{% url 'recipe_detail' recipe.id %}#comments" class="link"
-                                    style="color: green;">
+                                <a href="{% url 'recipe_detail' recipe.id %}#comments" class="link">
                                     <i class="fa-regular fa-comment icon"></i>
                                 </a>
                                 <span>{{ recipe.comment_count }}</span>
                                 {% if filter_type != 'my' %}
                                 {% if recipe.is_favourite %}
                                 <a href="{% url 'remove_from_favourites' recipe.id %}" class="link">
-                                    <i class="fa-solid fa-bookmark icon"></i>
+                                    <i class="fa-solid fa-bookmark icon icon-save"></i>
                                 </a>
                                 {% else %}
                                 <a href="{% url 'add_to_favourites' recipe.id %}" class="link">

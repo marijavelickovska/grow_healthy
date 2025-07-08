@@ -62,7 +62,7 @@ h1 {
   background-color: var(--hover-color);
   color: #fff;
   border: none;
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 2rem;
   margin-right: 1rem;
   border-radius: 0.3rem;
 }
@@ -92,7 +92,10 @@ h1 {
 }
 
 .username p {
-  margin: 0;
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-style: italic;
+  margin: 0 1.5rem;
 }
 
 /* Home page */
@@ -202,6 +205,15 @@ h1 {
   margin-left: 1rem;
   font-size: 20px;
   cursor: pointer;
+  color: black;
+}
+
+.icon-like {
+  color: blue;
+}
+
+.icon-save {
+  color: red;
 }
 
 /* Recipe details */
@@ -231,19 +243,23 @@ footer a {
 }
 
 /* Media queries */
-@media screen and (min-width: 576px) {
-  main {
-    overflow-y: hidden;
-  }
-}
-
 @media screen and (max-width: 576px) {
+  .username p {
+    display: none;
+  } 
+
   .image-side {
     height: 200px;
   }
 
   main {
     overflow-y: auto;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  main {
+    overflow-y: hidden;
   }
 }
 

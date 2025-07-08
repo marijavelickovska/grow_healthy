@@ -17,6 +17,11 @@ def add_recipe(request):
             recipe_form.save_m2m()
             messages.success(request, "Recipe added successfully.")
             return redirect('my_recipes')
+        else:
+            messages.error(
+                request,
+                "There was an error in your submission. Please check the form."
+                )
     else:
         recipe_form = RecipeForm()
 
@@ -36,16 +41,18 @@ def add_recipe(request):
 def edit_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
-    # Само авторот на рецептот може да го уредува
     if recipe.author != request.user:
-        return HttpResponseForbidden
-        ("You are not allowed to edit this recipe.")
+        messages.error(request, "You are not allowed to edit this recipe.")
+        return HttpResponseForbidden(
+            "You are not allowed to edit this recipe.")
 
     if request.method == 'POST':
         recipe_form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if recipe_form.is_valid():
             recipe_form.save()
             return redirect('recipe_detail', pk=recipe.id)
+        else:
+            messages.error(request, "There was an error updating the recipe. Please check the form.")
     else:
         recipe_form = RecipeForm(instance=recipe)
 
@@ -65,12 +72,14 @@ def edit_recipe(request, recipe_id):
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
-    if recipe.author == request.user:
-        recipe.delete()
-        messages.add_message(
-            request, messages.SUCCESS, 'Recipe successfully deleted!')
-    else:
-        messages.add_message(
-            request, messages.ERROR, 'You can only delete your own recipes!')
+    if recipe.author != request.user:
+        messages.error(request, "You can only delete your own recipes!")
+        return HttpResponseForbidden("You are not allowed to delete this recipe.")
 
-    return redirect('my_recipes')
+    if request.method == "POST":
+        recipe.delete()
+        messages.success(request, "Recipe successfully deleted!")
+        return redirect("my_recipes")
+    else:
+        messages.warning(request, "You must confirm deletion.")
+        return redirect("recipe_detail", pk=recipe.id)
