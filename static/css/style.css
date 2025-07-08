@@ -3,6 +3,7 @@
   --primary-color: #ded4c8; /* #ceb3a3 */
   --secondary-color: #6a7e1d;
   --hover-color: #90a92e;
+  --brown-color: #aa4933;
 }
 
 /* Global styles */
@@ -49,6 +50,42 @@ h1 {
 }
 
 /* Navbar */
+.navbar-brand {
+  color: var(--secondary-color);
+}
+
+.navbar-brand:hover {
+  color: #aa4933;
+}
+
+.navbar .btnGreen {
+  background-color: var(--hover-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 5rem;
+  margin-right: 1rem;
+  border-radius: 0.3rem;
+}
+
+.navbar .btnGreen:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btnDarkGreen {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  padding: 0.25rem 5rem;
+  margin-right: 1rem;
+  border-radius: 0.3rem;
+}
+
+.btnDarkGreen:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+
 .username {
   display: flex;
   align-items: center;
@@ -98,6 +135,36 @@ h1 {
   height: 150px;
   object-fit: cover;
   border: 2px solid lightgray;
+}
+
+.profile-fields {
+  border: 2px solid lightgray;
+  font-size: 0.95rem;
+}
+
+#editBtn {
+  background-color: var(--brown-color);
+  color: white;
+  border: 2px solid var(--brown-color);
+  font-size: large;
+  font-weight: 600;
+}
+
+#editBtn:hover {
+  background-color: var(--primary-color);
+  color: var(--red-color);
+}
+
+#saveBtn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: 2px solid var(--secondary-color);
+  font-size: large;
+  font-weight: 600;
+}
+
+#saveBtn:hover {
+  background-color: var(--hover-color);
 }
 
 .sub-nav-btn {
