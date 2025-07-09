@@ -97,7 +97,7 @@ for (let button of deleteRecipeButtons) {
 
 		deleteModalTitle.innerText = "Delete recipe?";
 		deleteModalBody.innerText = "Are you sure you want to delete this recipe? This action cannot be undone.";
-		deleteConfirm.href = `/user_profile/delete_recipe/${recipeId}/`;
+		deleteForm.action = `/user_profile/delete_recipe/${recipeId}/`;
 
 		deleteModal.show();
 	});

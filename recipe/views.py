@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, HttpResponseBadRequest
 from .models import Recipe
 from .forms import RecipeForm
 
@@ -70,6 +70,9 @@ def edit_recipe(request, recipe_id):
 
 @login_required
 def delete_recipe(request, recipe_id):
+    if request.method != "POST":
+        return HttpResponseBadRequest("Invalid request method.")
+
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
     if recipe.author == request.user:
