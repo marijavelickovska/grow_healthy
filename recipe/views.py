@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import Recipe
 from .forms import RecipeForm
-from user_profile.utils import get_profile_context
 
 
 @login_required
@@ -26,16 +25,9 @@ def add_recipe(request):
     else:
         recipe_form = RecipeForm()
 
-    # Retrieve profile and profile_form,
-    # so the profile form can be displayed on the add_recipe page
-    # Source: ChatGPT
-    profile, profile_form = get_profile_context(request.user)
-
     context = {
         "recipe_form": recipe_form,
         'is_edit': False,
-        "profile": profile,
-        "profile_form": profile_form,
     }
 
     return render(

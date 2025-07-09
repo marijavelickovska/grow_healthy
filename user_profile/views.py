@@ -8,7 +8,6 @@ from recipe.models import Recipe, Like, Comment, Favourite
 from recipe.forms import CommentForm
 from .models import Profile
 from .forms import ProfileForm
-from .utils import get_profile_context
 
 
 @login_required
@@ -88,18 +87,11 @@ def recipe_detail(request, pk):
 
     comment_form = CommentForm()
 
-    # Retrieve profile and profile_form,
-    # so the profile form can be displayed on the add_recipe page
-    # Source: ChatGPT
-    profile, profile_form = get_profile_context(request.user)
-
     context = {
         "recipe": recipe,
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
-        "profile": profile,
-        "profile_form": profile_form,
     }
 
     return render(
@@ -175,10 +167,6 @@ def comment_edit(request, recipe_id, comment_id):
 
 @login_required
 def comment_delete(request, recipe_id, comment_id):
-    if request.method != "POST":
-        messages.warning(request, "Invalid request method.")
-        return redirect("recipe_detail", recipe_id)
-
     comment = get_object_or_404(Comment, id=comment_id)
 
     if comment.author == request.user:
@@ -192,10 +180,6 @@ def comment_delete(request, recipe_id, comment_id):
 
 @login_required
 def add_to_favourites(request, recipe_id):
-    if request.method != "POST":
-        messages.warning(request, "Invalid request method.")
-        return redirect("dashboard")
-
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
     if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
@@ -209,10 +193,6 @@ def add_to_favourites(request, recipe_id):
 
 @login_required
 def remove_from_favourites(request, recipe_id):
-    if request.method != "POST":
-        messages.warning(request, "Invalid request method.")
-        return redirect("dashboard")
-
     recipe = get_object_or_404(Recipe, id=recipe_id)
     favourite = Favourite.objects.filter(
         user=request.user, recipe=recipe).first()
