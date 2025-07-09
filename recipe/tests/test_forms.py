@@ -9,7 +9,8 @@ from recipe.models import Comment
 
 class TestRecipeForm(TestCase):
     """
-    Unit tests for the RecipeForm to ensure it behaves correctly with valid and invalid data.
+    Unit tests for the RecipeForm to ensure it behaves correctly
+    with valid and invalid data.
     """
 
     def setUp(self):
