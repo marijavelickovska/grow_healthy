@@ -8,6 +8,7 @@ from recipe.models import Recipe, Like, Comment, Favourite
 from recipe.forms import CommentForm
 from .models import Profile
 from .forms import ProfileForm
+from .utils import get_profile_context
 
 
 @login_required
@@ -87,11 +88,18 @@ def recipe_detail(request, pk):
 
     comment_form = CommentForm()
 
+    # Retrieve profile and profile_form,
+    # so the profile form can be displayed on the add_recipe page
+    # Source: ChatGPT
+    profile, profile_form = get_profile_context(request.user)
+
     context = {
         "recipe": recipe,
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
+        "profile": profile,
+        "profile_form": profile_form,
     }
 
     return render(
