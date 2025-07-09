@@ -172,6 +172,9 @@ def comment_edit(request, recipe_id, comment_id):
 
 @login_required
 def comment_delete(request, recipe_id, comment_id):
+    if request.method != "POST":
+        return HttpResponseBadRequest("Invalid request method.")
+
     comment = get_object_or_404(Comment, id=comment_id)
 
     if comment.author == request.user:
@@ -180,7 +183,7 @@ def comment_delete(request, recipe_id, comment_id):
     else:
         messages.error(request, "You can only delete your own comments!")
 
-    return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))
+    return redirect("recipe_detail", recipe_id)
 
 
 @login_required

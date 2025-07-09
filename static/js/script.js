@@ -48,11 +48,6 @@ const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitCommentButton = document.getElementById("submitCommentButton");
 
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteConfirm = document.getElementById("deleteConfirm");
-const deleteModalBody = document.getElementById("deleteModalBody");
-const deleteModalTitle = document.getElementById("deleteModalTitle");
-
 
 for (let button of editCommentButtons) {
 	button.addEventListener("click", (e) => {
@@ -74,6 +69,12 @@ for (let button of editCommentButtons) {
 }
 
 
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteForm = document.getElementById("deleteForm");
+const deleteModalBody = document.getElementById("deleteModalBody");
+const deleteModalTitle = document.getElementById("deleteModalTitle");
+
+
 const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
 for (let button of deleteCommentButtons) {
 	button.addEventListener("click", (e) => {
@@ -82,7 +83,7 @@ for (let button of deleteCommentButtons) {
 
 		deleteModalTitle.innerText = "Delete comment?";
 		deleteModalBody.innerText = "Are you sure you want to delete your comment? This action cannot be undone.";
-		deleteConfirm.href = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`;
+		deleteForm.action = `/user_profile/recipe/${recipeId}/delete_comment/${commentId}/`;
 
 		deleteModal.show();
 	});
