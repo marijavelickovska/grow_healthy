@@ -155,7 +155,8 @@ h1 {
 
 #editBtn:hover {
   background-color: var(--primary-color);
-  color: var(--red-color);
+  color: var(--brown-color);
+  
 }
 
 #saveBtn {
@@ -168,6 +169,7 @@ h1 {
 
 #saveBtn:hover {
   background-color: var(--hover-color);
+  border: 2px solid var(--hover-color);
 }
 
 .sub-nav-btn {

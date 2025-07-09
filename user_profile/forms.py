@@ -6,21 +6,18 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image', 'name', 'about']
-        labels = {
-            'image': '',
-            'name': 'Your name',
-            'about': 'Something about you',
-        }
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control profile-fields',
                 'id': 'nameInput',
+                'placeholder': 'Your name',
                 'disabled': True
             }),
             'about': forms.Textarea(attrs={
                 'class': 'form-control profile-fields',
                 'id': 'aboutInput',
                 'rows': 3,
+                'placeholder': 'Something about you',
                 'disabled': True
             }),
             'image': forms.ClearableFileInput(attrs={
@@ -29,3 +26,8 @@ class ProfileForm(forms.ModelForm):
                 'accept': 'image/*'
             })
         }
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = ""
+        self.fields['about'].label = ""

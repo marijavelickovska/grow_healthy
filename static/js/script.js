@@ -21,25 +21,24 @@ function showRecipeMessage() {
 }
 
 
-console.log("JS loaded");
-
 const editBtn = document.getElementById("editBtn");
 const saveBtn = document.getElementById("saveBtn");
 const nameInput = document.getElementById("nameInput");
 const aboutInput = document.getElementById("aboutInput");
 const imageInput = document.getElementById("profileImgInput");
+const chooseImageLabel = document.getElementById("chooseImageLabel");
 
 editBtn.addEventListener("click", function () {
-	console.log("Edit clicked");
     // Enable the inputs
     nameInput.removeAttribute("disabled");
     aboutInput.removeAttribute("disabled");
+
+	// Show image input & label
     imageInput.classList.remove("d-none");
+    chooseImageLabel.classList.remove("d-none");
 
-    // Show the save button
+    // Swap buttons
     saveBtn.classList.remove("d-none");
-
-    // Hide the edit button
     editBtn.classList.add("d-none");
 });
 

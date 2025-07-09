@@ -54,11 +54,16 @@ def dashboard(request, filter_type=None):
     else:
         profile_form = ProfileForm(instance=profile)
 
+    profile_image_url = profile.image.url if profile.image else None
+    show_default_image = "placeholder" in profile_image_url if profile_image_url else True
+
     context = {
         "recipes": recipes,
         "filter_type": filter_type,
         "profile_form": profile_form,
         "profile": profile,
+        "profile_image_url": profile_image_url,
+        "show_default_image": show_default_image,
     }
 
     return render(

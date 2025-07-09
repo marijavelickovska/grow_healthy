@@ -7,11 +7,10 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile'
     )
-    name = models.CharField(max_length=100, verbose_name="Your name")
+    name = models.CharField(max_length=100)
     image = CloudinaryField('image', default='placeholder', blank=True)
     about = models.TextField(
-        max_length=500, blank=True, verbose_name="Something about you"
-    )
+        max_length=500, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 

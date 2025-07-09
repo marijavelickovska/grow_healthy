@@ -14,13 +14,19 @@
         <form id="profileForm" class="my-4" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3 text-center">
-                {% if profile.image %}
-                <img src="{{ profile.image.url }}" alt="Profile image" class="profile-img-preview">
-                {% else %}
+                <!-- Profile image preview -->
+                {% if show_default_image %}
                 <img src="{% static 'images/default.jpg' %}" alt="Default profile image" class="profile-img-preview">
+                {% else %}
+                <img src="{{ profile.image.url }}" alt="Profile image" class="profile-img-preview">
                 {% endif %}
+                <div>
+                <label for="profileImgInput" id="chooseImageLabel" class="btn btn-outline-secondary btn-sm mt-2 d-none">
+                    Choose new image
+                </label>
+                </div>
                 <div class="d-none">
-                    {{ profile_form.image }}
+                    {{ profile_form.image.as_widget }}
                 </div>
             </div>
             <div class="mb-3">

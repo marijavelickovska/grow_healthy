@@ -72,11 +72,7 @@ def edit_recipe(request, recipe_id):
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
-    if recipe.author != request.user:
-        messages.error(request, "You can only delete your own recipes!")
-        return HttpResponseForbidden("You are not allowed to delete this recipe.")
-
-    if request.method == "POST":
+    if recipe.author == request.user:
         recipe.delete()
         messages.success(request, "Recipe successfully deleted!")
         return redirect("my_recipes")
