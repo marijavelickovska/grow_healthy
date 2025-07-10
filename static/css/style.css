@@ -199,6 +199,11 @@ h1 {
   overflow: auto;
 }
 
+.author-info {
+  max-height: 200px;
+  object-fit: contain;
+}
+
 .link {
   text-decoration: none;
 }
