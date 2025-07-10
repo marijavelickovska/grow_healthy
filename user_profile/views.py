@@ -18,7 +18,7 @@ def dashboard(request, filter_type=None):
     if filter_type not in ALLOWED_FILTERS:
         return HttpResponseBadRequest("Invalid filter type.")
 
-    # Recipes
+    # Filter recipes
     if filter_type == "my":
         queryset = Recipe.objects.filter(author=user)
     elif filter_type == "favourites":
@@ -46,7 +46,9 @@ def dashboard(request, filter_type=None):
         messages.info(request, "New profile was created for your account.")
 
     if request.method == 'POST':
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        profile_form = ProfileForm(
+            request.POST, request.FILES, instance=profile
+        )
         if profile_form.is_valid():
             profile_form.save()
             messages.success(request, "Profile updated successfully.")
@@ -111,7 +113,6 @@ def recipe_like(request, pk):
     user = request.user
     recipe = get_object_or_404(Recipe, id=pk)
 
-    # add record to Like model
     try:
         Like.objects.create(user=user, recipe=recipe)
         messages.success(request, f"You liked {recipe.title}!")
@@ -119,8 +120,6 @@ def recipe_like(request, pk):
         messages.warning(request, f"You've already liked {recipe.title}!")
         pass
 
-    # Redirect back to the page the user came from, if exists,
-    # else to dashboard
     referer = request.META.get("HTTP_REFERER")
     if referer:
         return redirect(referer)
