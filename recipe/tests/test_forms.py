@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from recipe.forms import RecipeForm
 from recipe.models import Meal
 from recipe.forms import CommentForm
-from recipe.models import Comment
 
 
 class TestRecipeForm(TestCase):
@@ -18,7 +17,8 @@ class TestRecipeForm(TestCase):
         Set up test dependencies including a test user, a Meal instance,
         and a dummy uploaded image file.
         """
-        self.user = User.objects.create_user(username="testuser", password="password")
+        self.user = User.objects.create_user(
+            username="testuser", password="password")
         self.meal_type, _ = Meal.objects.get_or_create(name="Breakfast")
         self.image = SimpleUploadedFile(
             name="test_image.jpg",
