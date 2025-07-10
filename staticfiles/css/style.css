@@ -1,8 +1,9 @@
 /* CSS Variables */
 :root {
-  --primary-color: #d9dad5;
+  --primary-color: #ded4c8; /* #ceb3a3 */
   --secondary-color: #6a7e1d;
   --hover-color: #90a92e;
+  --brown-color: #aa4933;
 }
 
 /* Global styles */
@@ -22,29 +23,18 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  overflow: auto;
-}
-
 nav,
 footer {
   padding: 0;
 }
 
-/* Navbar */
-.username {
-  display: flex;
-  align-items: center;
+main {
+  flex: 1;
+  overflow: auto;
 }
 
-.username p {
-  margin: 0;
-}
-
-/* Home page */
-.bg-color {
-  background-color: var(--primary-color);
+h1 {
+  text-shadow: 1px 1px 2px #353e10;
 }
 
 .green {
@@ -53,6 +43,64 @@ footer {
 
 .bold {
   font-weight: 700;
+}
+
+.black {
+  color: black;
+}
+
+/* Navbar */
+.navbar-brand {
+  color: var(--secondary-color);
+}
+
+.navbar-brand:hover {
+  color: #aa4933;
+}
+
+.navbar .btnGreen {
+  background-color: var(--hover-color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  border-radius: 0.3rem;
+}
+
+.navbar .btnGreen:hover {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btnDarkGreen {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  padding: 0.25rem 5rem;
+  margin-right: 1rem;
+  border-radius: 0.3rem;
+}
+
+.btnDarkGreen:hover {
+  background-color: var(--hover-color);
+  color: white;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+}
+
+.username p {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-style: italic;
+  margin: 0 1.5rem;
+}
+
+/* Home page */
+.bg-color {
+  background-color: var(--primary-color);
 }
 
 #hero-image {
@@ -69,7 +117,6 @@ footer {
 
 .card-home,
 .card-dashboard {
-  width: 15rem;
   border-radius: 15px;
   cursor: pointer;
   box-shadow: 5px 10px 15px gray;
@@ -91,6 +138,38 @@ footer {
   height: 150px;
   object-fit: cover;
   border: 2px solid lightgray;
+}
+
+.profile-fields {
+  border: 2px solid lightgray;
+  font-size: 0.95rem;
+}
+
+#editBtn {
+  background-color: var(--brown-color);
+  color: white;
+  border: 2px solid var(--brown-color);
+  font-size: large;
+  font-weight: 600;
+}
+
+#editBtn:hover {
+  background-color: var(--primary-color);
+  color: var(--brown-color);
+  
+}
+
+#saveBtn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: 2px solid var(--secondary-color);
+  font-size: large;
+  font-weight: 600;
+}
+
+#saveBtn:hover {
+  background-color: var(--hover-color);
+  border: 2px solid var(--hover-color);
 }
 
 .sub-nav-btn {
@@ -120,18 +199,23 @@ footer {
   overflow: auto;
 }
 
-.card-link {
+.link {
   text-decoration: none;
 }
 
 .icon {
-  margin-right: 1rem;
+  margin-left: 1rem;
   font-size: 20px;
   cursor: pointer;
+  color: black;
 }
 
-.alert {
-  background-color: var(--bs-success-bg-subtle);
+.icon-like {
+  color: blue;
+}
+
+.icon-save {
+  color: red;
 }
 
 /* Recipe details */
@@ -144,9 +228,14 @@ footer {
   gap: 1rem;
 }
 
-.centered-container > .card-img-top {
-  height: 300px;
-  width: 500px;
+.card-recipe-detail {
+  border-radius: 15px;
+  box-shadow: 5px 10px 15px gray;
+}
+
+.link-size,
+.icon-size {
+  font-size: 0.8rem;
 }
 
 /* Footer */
@@ -155,9 +244,14 @@ footer a {
   color: #aa4933;
 }
 
+/* Media queries */
 @media screen and (max-width: 576px) {
+  .username p {
+    display: none;
+  } 
+
   .image-side {
-    height: 200px; /* или колку сакаш */
+    height: 200px;
   }
 
   main {
@@ -171,13 +265,7 @@ footer a {
   }
 }
 
-@media (max-width: 992px) {
-  .sub-nav-btn {
-    border-radius: 5px;
-  }
-}
-
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   .sub-nav-btn:not(:last-child) {
     border-right: none;
   }

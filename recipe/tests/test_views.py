@@ -22,8 +22,9 @@ class AddRecipeViewTests(TestCase):
 
     def test_post_invalid_data_shows_errors(self):
         self.client.login(username='testuser', password='password123')
-        # Missing required fields like title
-        response = self.client.post(self.url, data={'ingredients': 'Only this'}, follow=True)
+        response = self.client.post(
+            self.url, data={'ingredients': 'Only this'}, follow=True
+        )
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "There was an error in your submission")
         self.assertFalse(Recipe.objects.exists())
