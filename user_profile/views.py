@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from recipe.models import Recipe, Like, Comment, Favourite
 from recipe.forms import CommentForm
@@ -16,7 +16,8 @@ def dashboard(request, filter_type=None):
 
     ALLOWED_FILTERS = {"my", "favourites", None}
     if filter_type not in ALLOWED_FILTERS:
-        return HttpResponseBadRequest("Invalid filter type.")
+        messages.warning(request, "Invalid filter type.")
+        return redirect('dashboard')
 
     # Filter recipes
     if filter_type == "my":
@@ -172,7 +173,8 @@ def comment_edit(request, recipe_id, comment_id):
 @login_required
 def comment_delete(request, recipe_id, comment_id):
     if request.method != "POST":
-        return HttpResponseBadRequest("Invalid request method.")
+        messages.warning(request, "Invalid request method.")
+        return redirect("recipe_detail", recipe_id)
 
     comment = get_object_or_404(Comment, id=comment_id)
 
