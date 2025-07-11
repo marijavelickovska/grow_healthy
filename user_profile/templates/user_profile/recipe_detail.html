@@ -93,14 +93,14 @@
                 <p class="card-text fst-italic">
                     Created by:
                     <a href="#" class="text-success comment-author-link" data-bs-toggle="modal"
-                        data-bs-target="#modal-comment-author">{{comment.author }}</a>
+                        data-bs-target="#modal-comment-author-{{ comment.id }}">{{comment.author }}</a>
                     <!-- Modal to display comment author info -->
-                    <div class="modal fade" id="modal-comment-author" tabindex="-1"
-                        aria-labelledby="modal-comment-author-label" aria-hidden="true">
+                    <div class="modal fade" id="modal-comment-author-{{ comment.id }}" tabindex="-1"
+                        aria-labelledby="modal-comment-author-label-{{ comment.id }}" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="modal-comment-author-label">{{ comment.author }}</h1>
+                                    <h1 class="modal-title fs-5" id="modal-comment-author-label-{{ comment.id }}">{{ comment.author }}</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -110,7 +110,7 @@
                                         <img src="{% static 'images/default.jpg'%}" class="card-img-top author-info"
                                             alt="{{ comment.author.profile.name }}">
                                         {% else %}
-                                        <img src="{{ recipe.author.profile.image.url }}" class="card-img-top author-info"
+                                        <img src="{{ comment.author.profile.image.url }}" class="card-img-top author-info"
                                             alt="{{ comment.author.profile.name }}">
                                         {% endif %}
                                         <div class="card-body">
