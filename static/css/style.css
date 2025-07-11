@@ -1,7 +1,12 @@
+/* Google fonts import */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* CSS Variables */
 :root {
+  --primary-font: "Roboto", sans-serif;
+  --secondary-font: "Merriweather", sans-serif;
   --primary-color: #ded4c8; /* #ceb3a3 */
-  --secondary-color: #6a7e1d;
+  --secondary-color: #5B6A20;
   --hover-color: #90a92e;
   --brown-color: #aa4933;
 }
@@ -20,6 +25,7 @@ body {
 }
 
 body {
+  font-family: var(--primary-font);
   display: flex;
   flex-direction: column;
 }
@@ -35,6 +41,7 @@ main {
 }
 
 h1 {
+  font-family: var(--secondary-font);
   text-shadow: 1px 1px 2px #353e10;
 }
 
@@ -56,7 +63,7 @@ h1 {
 }
 
 .navbar-brand:hover {
-  color: #aa4933;
+  color: var(--brown-color);
 }
 
 .navbar .btnGreen {
@@ -128,9 +135,9 @@ h1 {
   overflow: auto;
 }
 
-#recipe-message {
+#join-us-message {
   display: none;
-  color: red;
+  color: var(--brown-color);
 }
 
 /* Dashboard */
