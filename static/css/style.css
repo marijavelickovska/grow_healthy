@@ -82,7 +82,7 @@ h1 {
 
 .btnDarkGreen {
   background-color: var(--secondary-color);
-  color: #fff;
+  color: #fff !important;
   border: none;
   padding: 0.25rem 5rem;
   margin-right: 1rem;
@@ -91,7 +91,7 @@ h1 {
 
 .btnDarkGreen:hover {
   background-color: var(--hover-color);
-  color: white;
+  color: white !important;
 }
 
 .username {
