@@ -27,10 +27,9 @@
                 <p class="fst-italic bold green">***Instructions:</p>
                 <p class="card-text">{{ recipe.instructions }}</p>
                 <hr>
-                <p class="card-text">
-                <p class="card-text">
+                <p class="card-text fst-italic bold green">
                     Created by:
-                    <a href="#" class="text-success" data-bs-toggle="modal"
+                    <a href="#" class="text-success recipe-author-link" data-bs-toggle="modal"
                         data-bs-target="#modal-recipe-author">{{recipe.author }}</a>
                     <!-- Modal to display recipe author info -->
                     <div class="modal fade" id="modal-recipe-author" tabindex="-1"
@@ -91,32 +90,32 @@
         <div class="card mb-2">
             <div class="card-body">
                 <p id="comment{{ comment.id }}" class="card-text">{{ comment.body }}</p>
-                <p class="card-text">
+                <p class="card-text fst-italic">
                     Created by:
-                    <a href="#" class="text-success" data-bs-toggle="modal"
-                        data-bs-target="#modal-recipe-author">{{comment.author }}</a>
+                    <a href="#" class="text-success comment-author-link" data-bs-toggle="modal"
+                        data-bs-target="#modal-comment-author">{{comment.author }}</a>
                     <!-- Modal to display comment author info -->
-                    <div class="modal fade" id="modal-recipe-author" tabindex="-1"
-                        aria-labelledby="modal-recipe-author-label" aria-hidden="true">
+                    <div class="modal fade" id="modal-comment-author" tabindex="-1"
+                        aria-labelledby="modal-comment-author-label" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="modal-recipe-author-label">{{ comment.author }}</h1>
+                                    <h1 class="modal-title fs-5" id="modal-comment-author-label">{{ comment.author }}</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="card">
-                                        {% if "placeholder" in recipe.author.profile.image.url %}
+                                        {% if "placeholder" in comment.author.profile.image.url %}
                                         <img src="{% static 'images/default.jpg'%}" class="card-img-top author-info"
-                                            alt="{{ recipe.author.profile.name }}">
+                                            alt="{{ comment.author.profile.name }}">
                                         {% else %}
                                         <img src="{{ recipe.author.profile.image.url }}" class="card-img-top author-info"
-                                            alt="{{ recipe.author.profile.name }}">
+                                            alt="{{ comment.author.profile.name }}">
                                         {% endif %}
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ recipe.author.profile.name }}</h5>
-                                            <p class="card-text">{{ recipe.author.profile.about }}</p>
+                                            <h5 class="card-title">{{ comment.author.profile.name }}</h5>
+                                            <p class="card-text">{{ comment.author.profile.about }}</p>
                                         </div>
                                     </div>
                                 </div>

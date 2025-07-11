@@ -1,11 +1,14 @@
+/* On click on a card with the class card-home, 
+ * a message is displayed and the page scrolls to the #join_us section where the message appears. 
+ * The message disappears after 5 seconds. */ 
+
 let cards = document.getElementsByClassName("card-home");
 for (let card of cards) {
 	card.addEventListener("click", showRecipeMessage);
 }
 
-// Scroll to the section where the messages for login and register are displayed and set a timeout to hide it
 function showRecipeMessage() {
-	let messageDiv = document.getElementById("recipe-message");
+	let messageDiv = document.getElementById("join-us-message");
 	let joinSection = document.getElementById("join_us");
 	messageDiv.style.display = "block";
 
@@ -21,6 +24,8 @@ function showRecipeMessage() {
 }
 
 
+/* On click on the edit button, enable profile form editing 
+ * by unlocking inputs and showing image upload and save options. */ 
 const editBtn = document.getElementById("editBtn");
 const saveBtn = document.getElementById("saveBtn");
 const nameInput = document.getElementById("nameInput");
@@ -39,6 +44,19 @@ editBtn.addEventListener("click", function () {
 });
 
 
+/* On click on submit comment button, scroll to the top of the comments section 
+ * where the new comment appears.*/ 
+document.getElementById("submitCommentButton").addEventListener("click", function () {
+    const commentsSection = document.getElementById("comments");
+    if (commentsSection) {
+        commentsSection.scrollIntoView({ behavior: "smooth" });
+    }
+});
+
+
+/* Adds click listeners to edit buttons that load the selected comment into the form for editing, 
+ * change the submit button text to "Update," update the form action URL, 
+ * and scroll to the top of the comments section where the updated comment appears.*/ 
 const editCommentButtons = document.getElementsByClassName("btn-edit-comment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
@@ -53,7 +71,6 @@ for (let button of editCommentButtons) {
 		submitCommentButton.innerText = "Update";
 		commentForm.setAttribute("action", `/user_profile/recipe/${recipeId}/edit_comment/${commentId}/`);
 
-		// Scroll to the add_comment section
 		const commentSection = document.getElementById("add_comment");
 		if (commentSection) {
 			commentSection.scrollIntoView({
@@ -64,6 +81,8 @@ for (let button of editCommentButtons) {
 }
 
 
+/* On click on delete button on a comment, open a Bootstrap modal for confirming comment deletion, 
+ * updates modal text and form action URL, and shows the modal for user confirmation. */ 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteForm = document.getElementById("deleteForm");
 const deleteModalBody = document.getElementById("deleteModalBody");
@@ -84,6 +103,8 @@ for (let button of deleteCommentButtons) {
 }
 
 
+/* On click on delete button on a recipe, open a Bootstrap modal for confirming recipe deletion, 
+ * updates modal text and form action URL, and shows the modal for user confirmation. */ 
 const deleteRecipeButtons = document.getElementsByClassName("btn-delete-recipe");
 for (let button of deleteRecipeButtons) {
 	button.addEventListener("click", (e) => {

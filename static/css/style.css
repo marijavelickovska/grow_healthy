@@ -157,7 +157,6 @@ h1 {
 #editBtn:hover {
   background-color: var(--primary-color);
   color: var(--brown-color);
-  
 }
 
 #saveBtn {
@@ -198,6 +197,11 @@ h1 {
 .card-dashboard-height {
   height: 150px;
   overflow: auto;
+}
+
+.comment-author-link,
+.recipe-author-link {
+  text-decoration: none;
 }
 
 .author-info {
