@@ -12,14 +12,17 @@ from .forms import ProfileForm
 
 @login_required
 def dashboard(request, filter_type=None):
+    """
+    Displays the user dashboard with optional recipe filtering and profile update form.
+    """
     user = request.user
 
+    # Filter recipes
     ALLOWED_FILTERS = {"my", "favourites", None}
     if filter_type not in ALLOWED_FILTERS:
         messages.warning(request, "Invalid filter type.")
         return redirect('dashboard')
 
-    # Filter recipes
     if filter_type == "my":
         queryset = Recipe.objects.filter(author=user)
     elif filter_type == "favourites":
@@ -27,10 +30,12 @@ def dashboard(request, filter_type=None):
     else:
         queryset = Recipe.objects.all()
 
+    # Pagination
     paginate_by = Paginator(queryset, 8)
     page_number = request.GET.get("page")
     recipes = paginate_by.get_page(page_number)
 
+    # Recipe likes, comments, favourites
     for recipe in recipes:
         recipe.is_liked = Like.objects.filter(
             user=request.user, recipe=recipe).exists()
@@ -39,7 +44,7 @@ def dashboard(request, filter_type=None):
         recipe.is_favourite = Favourite.objects.filter(
             user=request.user, recipe=recipe).exists()
 
-    # Profile
+    # Profile form
     try:
         profile = Profile.objects.get(user=user)
     except Profile.DoesNotExist:
@@ -57,16 +62,11 @@ def dashboard(request, filter_type=None):
     else:
         profile_form = ProfileForm(instance=profile)
 
-    profile_image_url = profile.image.url if profile.image else None
-    show_default_image = "placeholder" in profile_image_url if profile_image_url else True
-
     context = {
         "recipes": recipes,
         "filter_type": filter_type,
         "profile_form": profile_form,
         "profile": profile,
-        "profile_image_url": profile_image_url,
-        "show_default_image": show_default_image,
     }
 
     return render(
@@ -78,6 +78,9 @@ def dashboard(request, filter_type=None):
 
 @login_required
 def recipe_detail(request, pk):
+    """
+    Displays a single recipe with comments and handles new comment submissions.
+    """
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, id=pk)
 
@@ -111,15 +114,16 @@ def recipe_detail(request, pk):
 
 @login_required
 def recipe_like(request, pk):
+    """
+    Adds a like to a recipe for the logged-in user.
+    """
     user = request.user
     recipe = get_object_or_404(Recipe, id=pk)
 
-    try:
+    like_exists = Like.objects.filter(user=user, recipe=recipe).exists()
+    if not like_exists:
         Like.objects.create(user=user, recipe=recipe)
         messages.success(request, f"You liked {recipe.title}!")
-    except IntegrityError:
-        messages.warning(request, f"You've already liked {recipe.title}!")
-        pass
 
     referer = request.META.get("HTTP_REFERER")
     if referer:
@@ -130,11 +134,15 @@ def recipe_like(request, pk):
 
 @login_required
 def recipe_unlike(request, pk):
+    """
+    Removes the logged-in user's like from the specified recipe.
+    """
     user = request.user
     recipe = get_object_or_404(Recipe, id=pk)
+
     like = get_object_or_404(Like, user=user, recipe=recipe)
     like.delete()
-    messages.error(request, f"You no longer like {recipe.title}!")
+    messages.success(request, f"You no longer like {recipe.title}!")
 
     referer = request.META.get("HTTP_REFERER")
     if referer:
@@ -145,33 +153,46 @@ def recipe_unlike(request, pk):
 
 @login_required
 def comment_edit(request, recipe_id, comment_id):
+    """
+    Handles editing of a user's comment on a recipe via POST request.
+    """
     if request.method != "POST":
         messages.warning(request, "Invalid request method.")
         return redirect("recipe_detail", recipe_id)
 
-    if request.method == "POST":
-        recipe = get_object_or_404(Recipe, id=recipe_id)
-        comment = get_object_or_404(Comment, id=comment_id)
-        comment_form = CommentForm(request.POST, instance=comment)
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    comment = get_object_or_404(Comment, id=comment_id)
 
-        if comment.author != request.user:
-            messages.error(request, "You are not allowed to edit this comment.")
-            return redirect("recipe_detail", recipe_id)
+    if comment.author != request.user:
+        messages.error(
+            request,
+            "You are not allowed to edit this comment."
+        )
+        return redirect("recipe_detail", recipe_id)
 
-        if comment_form.is_valid() and comment.author == request.user:
-            comment = comment_form.save(commit=False)
-            comment.recipe = recipe
-            comment.author = request.user
-            comment.save()
-            messages.success(request, "Comment successfully updated.")
-        else:
-            messages.error(request, "Error updating comment. Please try again.")
+    comment_form = CommentForm(request.POST, instance=comment)
 
-    return HttpResponseRedirect(reverse('recipe_detail', args=[recipe_id]))
+    if comment_form.is_valid() and comment.author == request.user:
+        comment = comment_form.save(commit=False)
+        comment.recipe = recipe
+        comment.author = request.user
+        comment.save()
+        messages.success(request, "Comment successfully updated.")
+    else:
+        messages.error(
+            request,
+            "Error updating comment. Please try again."
+        )
+
+    return redirect("recipe_detail", recipe_id)
 
 
 @login_required
 def comment_delete(request, recipe_id, comment_id):
+    """
+    Deletes a comment on a recipe if
+    the request is POST and the user is the author.
+    """
     if request.method != "POST":
         messages.warning(request, "Invalid request method.")
         return redirect("recipe_detail", recipe_id)
@@ -189,6 +210,10 @@ def comment_delete(request, recipe_id, comment_id):
 
 @login_required
 def add_to_favourites(request, recipe_id):
+    """
+    Adds the selected recipe to the user's favourites list
+    if not already present.
+    """
     recipe = get_object_or_404(Recipe, id=recipe_id)
 
     if Favourite.objects.filter(user=request.user, recipe=recipe).exists():
@@ -202,13 +227,17 @@ def add_to_favourites(request, recipe_id):
 
 @login_required
 def remove_from_favourites(request, recipe_id):
+    """
+    Removes the selected recipe from the user's favourites 
+    if it's already favourited.
+    """
     recipe = get_object_or_404(Recipe, id=recipe_id)
     favourite = Favourite.objects.filter(
         user=request.user, recipe=recipe).first()
 
     if favourite:
         favourite.delete()
-        messages.error(request, "Recipe removed from favourites.")
+        messages.success(request, "Recipe removed from favourites.")
     else:
         messages.info(request, "This recipe was not in your favourites.")
 

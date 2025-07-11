@@ -3,7 +3,13 @@ from .models import Recipe, Comment
 
 
 class RecipeForm(forms.ModelForm):
+    """
+    Form class for users to add new recipes.
+    """
     class Meta:
+        """
+        Specify the django model and the fields
+        """
         model = Recipe
         fields = [
             'title',
@@ -32,7 +38,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['body']
         labels = {
-            'body': '',  
+            'body': '',
         }
         widgets = {
             'body': forms.Textarea(attrs={

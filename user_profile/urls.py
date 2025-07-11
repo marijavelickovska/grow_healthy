@@ -5,11 +5,11 @@ from . import views
 
 urlpatterns = [
     path("add_recipe/", recipe_views.add_recipe, name="add_recipe"),
-    path("edit_recipe/<int:recipe_id>/",
-         recipe_views.edit_recipe, name="edit_recipe"),
+    path("dashboard/", views.dashboard, name="dashboard"),
     path("delete_recipe/<int:recipe_id>/",
          recipe_views.delete_recipe, name='delete_recipe'),
-    path("dashboard/", views.dashboard, name="dashboard"),
+    path("edit_recipe/<int:recipe_id>/",
+         recipe_views.edit_recipe, name="edit_recipe"),
     path(
         "favourite/",
         views.dashboard, {"filter_type": "favourites"}, name="favourites"

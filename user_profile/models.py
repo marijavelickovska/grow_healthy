@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 
 class Profile(models.Model):
+    """
+    Model to store personal details of a user profile.
+    """
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='profile'
     )

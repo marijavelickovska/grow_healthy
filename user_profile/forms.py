@@ -3,6 +3,9 @@ from .models import Profile
 
 
 class ProfileForm(forms.ModelForm):
+    """
+    Form class for users to store profile information.
+    """
     class Meta:
         model = Profile
         fields = ['image', 'name', 'about']

@@ -29,15 +29,11 @@ const imageInput = document.getElementById("profileImgInput");
 const chooseImageLabel = document.getElementById("chooseImageLabel");
 
 editBtn.addEventListener("click", function () {
-    // Enable the inputs
     nameInput.removeAttribute("disabled");
     aboutInput.removeAttribute("disabled");
 
-	// Show image input & label
     imageInput.classList.remove("d-none");
     chooseImageLabel.classList.remove("d-none");
-
-    // Swap buttons
     saveBtn.classList.remove("d-none");
     editBtn.classList.add("d-none");
 });
@@ -47,7 +43,6 @@ const editCommentButtons = document.getElementsByClassName("btn-edit-comment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitCommentButton = document.getElementById("submitCommentButton");
-
 
 for (let button of editCommentButtons) {
 	button.addEventListener("click", (e) => {
@@ -73,7 +68,6 @@ const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteForm = document.getElementById("deleteForm");
 const deleteModalBody = document.getElementById("deleteModalBody");
 const deleteModalTitle = document.getElementById("deleteModalTitle");
-
 
 const deleteCommentButtons = document.getElementsByClassName("btn-delete-comment");
 for (let button of deleteCommentButtons) {

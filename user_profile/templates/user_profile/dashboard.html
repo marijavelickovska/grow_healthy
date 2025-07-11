@@ -15,15 +15,16 @@
             {% csrf_token %}
             <div class="mb-3 text-center">
                 <!-- Profile image preview -->
-                {% if show_default_image %}
-                <img src="{% static 'images/default.jpg' %}" alt="Default profile image" class="profile-img-preview">
-                {% else %}
+                {% if profile.image and "placeholder" not in profile.image.url %}
                 <img src="{{ profile.image.url }}" alt="Profile image" class="profile-img-preview">
+                {% else %}
+                <img src="{% static 'images/default.jpg' %}" alt="Default profile image" class="profile-img-preview">
                 {% endif %}
                 <div>
-                <label for="profileImgInput" id="chooseImageLabel" class="btn btn-outline-secondary btn-sm mt-2 d-none">
-                    Choose new image
-                </label>
+                    <label for="profileImgInput" id="chooseImageLabel"
+                        class="btn btn-outline-secondary btn-sm mt-2 d-none">
+                        Choose new image
+                    </label>
                 </div>
                 <div class="d-none">
                     {{ profile_form.image.as_widget }}

@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 
 class Meal(models.Model):
+    """
+    Model representing a meal type (e.g., breakfast, lunch, dinner).
+    """
     name = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
@@ -11,6 +14,9 @@ class Meal(models.Model):
 
 
 class Recipe(models.Model):
+    """
+    Model for storing user-submitted cooking recipes.
+    """
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200)
     author = models.ForeignKey(
@@ -32,6 +38,9 @@ class Recipe(models.Model):
 
 
 class Favourite(models.Model):
+    """
+    Model for storing recipes that a user has marked as favourite.
+    """
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='favourites'
     )
@@ -49,6 +58,9 @@ class Favourite(models.Model):
 
 
 class Like(models.Model):
+    """
+    Model for storing user likes on recipes.
+    """
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='likes'
         )
@@ -66,6 +78,9 @@ class Like(models.Model):
 
 
 class Comment(models.Model):
+    """
+    Model for storing user comments on recipes.
+    """
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='comments'
     )
