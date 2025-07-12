@@ -7,9 +7,9 @@
 
 {% block signup %}
 <div class="container-fluid">
-  <div class="row ms-5">
+  <div class="row">
     <div class="col-12 col-md-6 pt-5">
-      <h2 class="fst-italic green my-5">Welcome to Grow Healthy</h2>
+      <h2 class="fst-italic green my-5 signUp-welcome">Welcome to Grow Healthy</h2>
       <h2 class="fst-italic green">Sign Up</h2>
       <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
@@ -17,7 +17,7 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btnDarkGreen px-5 mb-4" type="submit">{% trans "Sign Up" %} &raquo;</button>
+        <button class="btn btnGreen px-5 mb-4" type="submit">{% trans "Sign Up" %} &raquo;</button>
       </form>
       <p>Already have an account? Then you can log in <a class="link" href="{{ login_url }}">here</a></p>
     </div>

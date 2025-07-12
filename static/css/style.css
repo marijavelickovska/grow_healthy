@@ -66,30 +66,16 @@ h1 {
   color: var(--brown-color);
 }
 
-.navbar .btnGreen {
-  background-color: var(--hover-color);
-  color: #fff;
+.btnGreen {
+  background-color: var(--secondary-color);
+  color: #fff !important;
   border: none;
   padding: 0.5rem 2rem;
   margin-right: 1rem;
   border-radius: 0.3rem;
 }
 
-.navbar .btnGreen:hover {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-.btnDarkGreen {
-  background-color: var(--secondary-color);
-  color: #fff !important;
-  border: none;
-  padding: 0.25rem 5rem;
-  margin-right: 1rem;
-  border-radius: 0.3rem;
-}
-
-.btnDarkGreen:hover {
+.btnGreen:hover {
   background-color: var(--hover-color);
   color: white !important;
 }
@@ -273,6 +259,17 @@ footer a {
 
   main {
     overflow-y: auto;
+  }
+
+  .navbar .btnGreen {
+    display: inline-block;
+    width: 8rem;
+    margin-top: 0.5rem;
+  }
+
+  .logIn-welcome,
+  .signUp-welcome {
+    margin: 0.5rem 0 !important;
   }
 }
 

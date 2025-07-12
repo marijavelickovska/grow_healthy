@@ -54,11 +54,11 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link btnDarkGreen {% if request.path == login_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link btnGreen {% if request.path == login_url %}active" aria-current="page{% endif %}"
                             href="{% url 'account_login' %}">Log In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btnDarkGreen {% if request.path == signup_url %}active" aria-current="page{% endif %}"
+                        <a class="nav-link btnGreen {% if request.path == signup_url %}active" aria-current="page{% endif %}"
                             href="{% url 'account_signup' %}">Sign Up</a>
                     </li>
                     {% endif %}
