@@ -21,7 +21,8 @@ class Home(generic.ListView):
     **Method override:**
 
     The `dispatch` method is overridden to check if the user is authenticated.
-    If so, it redirects the user to the dashboard instead of showing the home page.
+    If so, it redirects the user to the dashboard,
+    instead of showing the home page.
     Otherwise, it proceeds with the normal request dispatching process.
     """
 

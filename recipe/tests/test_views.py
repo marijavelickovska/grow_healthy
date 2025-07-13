@@ -7,7 +7,9 @@ from recipe.models import Recipe
 class AddRecipeViewTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', password='password123')
+        self.user = User.objects.create_user(
+            username='testuser', password='password123'
+        )
         self.url = reverse('add_recipe')
 
     def test_redirect_if_not_logged_in(self):

@@ -13,7 +13,8 @@ from .forms import ProfileForm
 @login_required
 def dashboard(request, filter_type=None):
     """
-    Displays the user dashboard with optional recipe filtering and profile update form.
+    Displays the user dashboard with optional recipe filtering
+    and profile update form.
     """
     user = request.user
 
@@ -228,7 +229,7 @@ def add_to_favourites(request, recipe_id):
 @login_required
 def remove_from_favourites(request, recipe_id):
     """
-    Removes the selected recipe from the user's favourites 
+    Removes the selected recipe from the user's favourites
     if it's already favourited.
     """
     recipe = get_object_or_404(Recipe, id=recipe_id)

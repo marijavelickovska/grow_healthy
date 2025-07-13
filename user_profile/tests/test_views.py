@@ -130,7 +130,7 @@ class CommentDeleteViewTest(BaseTestSetup):
         self.client.login(username="otheruser", password="otherpass")
         response = self.client.post(self.delete_url, follow=True)
         self.assertRedirects(
-            response, 
+            response,
             reverse("recipe_detail", args=[self.recipe.pk])
         )
         self.assertTrue(Comment.objects.filter(pk=self.comment.pk).exists())

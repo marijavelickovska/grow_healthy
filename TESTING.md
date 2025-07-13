@@ -49,111 +49,22 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 ### CSS
 
-⚠️ INSTRUCTIONS ⚠️
-
-1. [*recommended*] If you are using the live deployed site, use this link: https://jigsaw.w3.org/css-validator/#validate_by_uri
-2. If you are copying/pasting your CSS code, use this link: https://jigsaw.w3.org/css-validator/#validate_by_input
-
-It's recommended to validate the live site for your primary CSS file on the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://jigsaw.w3.org/css-validator/validator?uri=https://grow-healthy-project-8fc1f11790e8.herokuapp.com
-
-If you have additional/multiple CSS files, then individual "[validation by input](https://jigsaw.w3.org/css-validator/#validate_by_input)" is recommended for the extra CSS files.
-
-**IMPORTANT**: Third-Party tools
-
-If you're using external libraries/frameworks (e.g: Bootstrap, Materialize, Font Awesome, etc.), then sometimes the tool will attempt to also validate these, even though it's not part of your own actual code that you wrote. You are not required to validate the external libraries or frameworks!
-
-⚠️ --- END --- ⚠️
-
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
 
-| Directory | File | URL | Screenshot | Notes |
+| Directory | File | URL | Screenshot | 
 | --- | --- | --- | --- | --- |
-| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | Link (if applicable) | ![screenshot](documentation/validation/css-static-style.png) | Notes (if applicable) |
+| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | [link](https://jigsaw.w3.org/css-validator/validator) | ![screenshot](documentation/validation/css-static-style.png) | 
 
 
 ### JavaScript
 
-⚠️ INSTRUCTIONS ⚠️
-
-If using modern JavaScript (ES6) methods, then make sure to include the following line at the very top of every single JavaScript file in your project (this should remain in your files for submission as well):
-
-`/* jshint esversion: 11 */`
-
-If you are also including jQuery (`$`), then the updated format will be:
-
-`/* jshint esversion: 11, jquery: true */`
-
-This allows the JShint validator to recognize modern ES6 methods, such as: `let`, `const`, `template literals`, `arrow functions (=>)`, etc.
-
-**IMPORTANT**: External resources
-
-Sometimes we'll write JavaScript that imports variables from other files, such as "an array of questions" from `questions.js`, which are used within the main `script.js` file elsewhere. If that's the case, the JShint validation tool doesn't know how to recognize "unused variables" that would normally be imported locally when running your own project. These warnings are acceptable, so showcase on your screenshot(s).
-
-The same thing applies when using external libraries such as Stripe, Leaflet, Bootstrap, Materialize, etc. To instantiate these components, we need to use their respective declarator. Again, the JShint validation tool would flag these as "undefined/unused variables". These warnings are acceptable, so showcase on your screenshot(s).
-
-⚠️ --- END --- ⚠️
-
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
-| Directory | File | URL | Screenshot | Notes |
+| Directory | File | URL | Screenshot | 
 | --- | --- | --- | --- | --- |
-| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) | Notes (if applicable) |
-
+| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) |
 
 ### Python
-
-⚠️ INSTRUCTIONS ⚠️
-
-The [CI Python Linter](https://pep8ci.herokuapp.com) can be used two different ways.
-
-- Copy/Paste your Python code directly into the linter.
-- As an API, using the "raw" URL appended to the linter URL.
-    - To find the "raw" URL, navigate to your file directly on the GitHub repo.
-    - On that page, GitHub provides a button on the right called "Raw" that you can click.
-    - From that new page, copy the full URL, and paste it after the CI Python Linter URL (with a `/` separator).
-
-It's recommended to validate each file using the API URL. This will give you a custom URL which you can use on your testing documentation. It makes it easier to return back to a file for validating it again in the future. Use the steps above to generate your own custom URLs for each Python file.
-
-**IMPORTANT**: `E501 line too long` errors
-
-You must strive to fix all Python lines that are too long (>80 characters). In rare cases where you cannot break the lines [*without breaking the functionality*], adding "`  # noqa`" (*NO Quality Assurance*) to the end of those lines will ignore linting validation. Do not use "`  # noqa`" all over your project just to clear down validation errors! This can still cause a project to fail, for failing to fix actual PEP8 validation errors.
-
-Sometimes variables can get too long, or excessive `if/else` conditional statements. These are acceptable instances to use the "`  # noqa`" comment.
-
-When trying to fix "line too long" errors, try to avoid using `/` to split lines. A better approach would be to use any type of opening bracket, and hit `<Enter>` just after that. Any opening bracket type will work: `(`, `[`, `{`. By using an opening bracket, Python knows where to appropriately indent the next line of code, without having to *guess* for yourself and attempt to "tab" to the correct indentation level.
-
-⚠️ --- END --- ⚠️
-
-🛑 IMPORTANT 🛑
-
-**IMPORTANT**: Django settings
-
-The Django `settings.py` file comes with 4 lines that are quite long, and will throw the `E501 line too long` error. This is default behavior, but can be fixed by adding the "`  # noqa`" comment at the end of those lines.
-
-```python
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",  # noqa
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",  # noqa
-    },
-]
-```
-
-**IMPORTANT**: *migration* and *pycache* files
-
-You do not have to validate files from the `migrations/` or `pycache/` folders! Ignore these `.py` files, and validate just the files that you've created or modified.
-
-🛑 --- END --- 🛑
 
 I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com) to validate all of my Python files.
 
@@ -161,17 +72,16 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 | --- | --- | --- | --- | --- |
 | grow_healthy | [settings.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/settings.py) | ![screenshot](documentation/validation/py-grow_healthy-settings.png) | Notes (if applicable) |
 | grow_healthy | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/urls.py) | ![screenshot](documentation/validation/py-grow_healthy-urls.png) | Notes (if applicable) |
-| home | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/admin.py) | ![screenshot](documentation/validation/py-home-admin.png) | Notes (if applicable) |
-| home | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/models.py) | ![screenshot](documentation/validation/py-home-models.png) | Notes (if applicable) |
-| home | [tests.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/tests.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/tests.py) | ![screenshot](documentation/validation/py-home-tests.png) | Notes (if applicable) |
 | home | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/urls.py) | ![screenshot](documentation/validation/py-home-urls.png) | Notes (if applicable) |
 | home | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/views.py) | ![screenshot](documentation/validation/py-home-views.png) | Notes (if applicable) |
-|  | [manage.py](https://github.com/marijavelickovska/grow_healthy/blob/main/manage.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/manage.py) | ![screenshot](documentation/validation/py--manage.png) | Notes (if applicable) |
+| recipe | [test_forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/admin.py) | ![screenshot](documentation/validation/py-recipe-test-forms.png) | Notes (if applicable) |
+| recipe | [test_views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/admin.py) | ![screenshot](documentation/validation/py-recipe-test-views.png) | Notes (if applicable) |
 | recipe | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/admin.py) | ![screenshot](documentation/validation/py-recipe-admin.png) | Notes (if applicable) |
 | recipe | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/forms.py) | ![screenshot](documentation/validation/py-recipe-forms.png) | Notes (if applicable) |
 | recipe | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/models.py) | ![screenshot](documentation/validation/py-recipe-models.png) | Notes (if applicable) |
-| recipe | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/urls.py) | ![screenshot](documentation/validation/py-recipe-urls.png) | Notes (if applicable) |
 | recipe | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/views.py) | ![screenshot](documentation/validation/py-recipe-views.png) | Notes (if applicable) |
+| user_profile | [test-forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/admin.py) | ![screenshot](documentation/validation/py-user_profile-test-forms.png) | Notes (if applicable) |
+| user_profile | [test-views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/context_processors.py) | ![screenshot](documentation/validation/py-user_profile-test-views.png) | Notes (if applicable) |
 | user_profile | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/admin.py) | ![screenshot](documentation/validation/py-user_profile-admin.png) | Notes (if applicable) |
 | user_profile | [context_processors.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/context_processors.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/context_processors.py) | ![screenshot](documentation/validation/py-user_profile-context_processors.png) | Notes (if applicable) |
 | user_profile | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/forms.py) | ![screenshot](documentation/validation/py-user_profile-forms.png) | Notes (if applicable) |

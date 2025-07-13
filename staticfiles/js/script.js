@@ -1,3 +1,5 @@
+/* jshint esversion: 11 */
+
 /* On click on a card with the class card-home, 
  * a message is displayed and the page scrolls to the #join_us section where the message appears. 
  * The message disappears after 5 seconds. */ 

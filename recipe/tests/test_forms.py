@@ -28,7 +28,8 @@ class TestRecipeForm(TestCase):
 
     def test_recipe_form_is_valid(self):
         """
-        Test that the RecipeForm is valid when all required fields are provided correctly.
+        Test that the RecipeForm is valid
+        when all required fields are provided correctly.
         """
         form_data = {
             "title": "Test Recipe",
@@ -57,7 +58,7 @@ class TestRecipeForm(TestCase):
         }
         recipe_form = RecipeForm(data=form_data, files={"image": self.image})
         self.assertFalse(
-            recipe_form.is_valid(), 
+            recipe_form.is_valid(),
             msg="RecipeForm should be invalid without a title"
         )
 
