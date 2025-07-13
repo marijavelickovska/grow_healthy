@@ -7,44 +7,15 @@
 
 ### HTML
 
-⚠️ INSTRUCTIONS ⚠️
-
-1. [*recommended*] If you are using the live deployed site URLs, validate using this link: https://validator.w3.org/#validate_by_uri
-2. Otherwise, if you are copying/pasting your HTML code manually, use this link: https://validator.w3.org/#validate_by_input
-
-It's recommended to validate the live pages (all of them) using the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://validator.w3.org/nu/?doc=https://marijavelickovska.github.io/grow_healthy/index.html
-
-⚠️ --- END --- ⚠️
-
-🛑 IMPORTANT 🛑
-
-RE: Python/Jinja syntax in HTML
-
-Python projects that use Jinja syntax, such as `{% for loops %}`, `{% url 'home' %}`, and `{{ variable|filter }}` will not validate properly if you're copying/pasting into the HTML validator.
-
-In order to properly validate these types of files, it's recommended to [validate by uri](https://validator.w3.org/#validate_by_uri) from the deployed Heroku pages.
-
-Unfortunately, pages that require a user to be "logged-in" and authenticated (CRUD functionality) will not work using this method, due to the fact that the HTML Validator (W3C) doesn't have access to login to an account on your project. In order to properly validate HTML pages with Jinja syntax for authenticated pages, follow these steps:
-
-- Navigate to the deployed pages which require authentication.
-- Right-click anywhere on the page, and select **View Page Source** (usually `CTRL+U` or `⌘+U` on Mac).
-- This will display the entire "compiled" code, without any Jinja syntax.
-- Copy everything, and use the [validate by input](https://validator.w3.org/#validate_by_input) method.
-- Repeat this process for every page that requires a user to be logged-in/authenticated (e.g.: CRUD functionality).
-
-🛑 ---- END --- 🛑
-
 I have used the recommended [HTML W3C Validator](https://validator.w3.org) to validate all of my HTML files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| home | [home.html](https://github.com/marijavelickovska/grow_healthy/blob/main/home/templates/home/home.html) | Link (if applicable) | ![screenshot](documentation/validation/html-home-home.png) | Notes (if applicable) |
-| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | Link (if applicable) | ![screenshot](documentation/validation/html-templates-404.png) | Notes (if applicable) |
-| user_profile | [add_recipe.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/add_recipe.html) | Link (if applicable) | ![screenshot](documentation/validation/html-user_profile-add_recipe.png) | Notes (if applicable) |
-| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | Link (if applicable) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) | Notes (if applicable) |
-| user_profile | [recipe_detail.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/recipe_detail.html) | Link (if applicable) | ![screenshot](documentation/validation/html-user_profile-recipe_detail.png) | Notes (if applicable) |
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- |
+| home | [home.html](https://github.com/marijavelickovska/grow_healthy/blob/main/home/templates/home/home.html) | ![screenshot](documentation/validation/html-home-home.png) | Notes (if applicable) |
+| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) | Notes (if applicable) |
+| user_profile | [recipe_detail.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/recipe_detail.html) | ![screenshot](documentation/validation/html-user_profile-recipe_detail.png) | During testing, 6 errors and 1 warning appear on recipe_detail.html, but these issues do not originate directly from this page. The reason is that recipe_detail.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
+| user_profile | [add_recipe.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/add_recipe.html) | ![screenshot](documentation/validation/html-user_profile-add_recipe.png) | During testing, 4 errors appear on add_recipe.html, but these errors do not originate directly from this page. The reason is that add_recipe.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
+| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | ![screenshot](documentation/validation/html-templates-404.png) | Notes (if applicable) |
 
 
 ### CSS
