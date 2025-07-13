@@ -7,16 +7,18 @@
 
 <!-- Hero section -->
 {% block hero_image %}
-<div class="container">
+<section class="container">
+    <h2 class="hidden">Hero image</h2>
     <div class="row">
         <div class="col-12" id="hero-image"></div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 <!-- Messages -->
 {% block home_messages %}
-<div class="container">
+<section class="container">
+    <h2 class="hidden">Messages</h2>
     <div class="row mt-2">
         <div class="col-12">
             {% if messages %}
@@ -33,12 +35,13 @@
             {% endif %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 <!-- About section -->
 {% block about_grow_healthy %}
-<div class="container">
+<section class="container">
+    <h2 class="hidden">About Grow Healthy</h2>
     <div class="row d-flex justify-content-center text-center">
         <div class="col-12 mt-4 h-100">
             <h3 class="green">Welcome to</h3>
@@ -61,12 +64,13 @@
                 and simple, joyful meals.</p>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 <!-- Recipes section -->
 {% block home_recipes_list %}
-<div class="container my-4">
+<section class="container my-4">
+    <h2 class="hidden">Latest Recipes</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {% for recipe in recipe_list %}
         <div class="col-12">
@@ -96,12 +100,12 @@
             {% endif %}
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
 
 <!-- Join us section -->
 {% block join_us %}
-<div id="join_us" class="container mb-4">
+<section id="join_us" class="container mb-4">
     <h2 class="hidden">Join us</h2>
     <div class="row text-center">
         <div class="col-12">
@@ -115,5 +119,5 @@
             <a href="{% url 'account_signup' %}" class="btn btnGreen px-5 mb-3">Sign Up</a>
         </div>
     </div>
-</div>
+</section>
 {% endblock %}
