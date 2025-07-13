@@ -67,13 +67,14 @@
 <!-- Recipes section -->
 {% block home_recipes_list %}
 <section class="container my-4">
+    <h2 class="mb-4 hidden">Latest Recipes</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {% for recipe in recipe_list %}
         <div class="col-12">
             <div class="card card-home my-4">
                 <img src=" {{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
                 <div class="card-body card-home-height">
-                    <h2 class="card-title green h5">{{ recipe.title }}</h2>
+                    <h5 class="card-title green">{{ recipe.title }}</h5>
                     <p class="card-text">{{ recipe.excerpt }}</p>
                 </div>
             </div>
