@@ -57,6 +57,10 @@ h1 {
   color: black;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Navbar */
 .navbar-brand {
   color: var(--secondary-color);
