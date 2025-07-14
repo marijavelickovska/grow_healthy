@@ -13,7 +13,7 @@
         <form id="recipeForm" method="post" enctype="multipart/form-data">
             {{ recipe_form | crispy }}
             {% csrf_token %}
-            <button id="submitRecipeButton" type="submit" class="btn btn-success px-5">Submit</button>
+            <button id="submitRecipeButton" type="submit" class="btn btnGreen px-5">Submit</button>
         </form>
     </div>
 </section>

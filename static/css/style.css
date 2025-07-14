@@ -50,12 +50,16 @@ h1 {
   color: var(--secondary-color);
 }
 
-.bold {
-  font-weight: 700;
+.green-hover:hover {
+  color: var(--hover-color);
 }
 
 .black {
   color: black;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 .hidden {

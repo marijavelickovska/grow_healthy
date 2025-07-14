@@ -29,7 +29,7 @@
                 <hr>
                 <p class="card-text fst-italic bold green">
                     Created by:
-                    <a href="#" class="text-success recipe-author-link" data-bs-toggle="modal"
+                    <a href="#" class="green green-hover recipe-author-link" data-bs-toggle="modal"
                         data-bs-target="#modal-recipe-author">{{recipe.author }}</a>
                     <!-- Modal to display recipe author info -->
                     <div class="modal fade" id="modal-recipe-author" tabindex="-1"
@@ -91,7 +91,7 @@
                 <p id="comment{{ comment.id }}" class="card-text">{{ comment.body }}</p>
                 <p class="card-text fst-italic">
                     Created by:
-                    <a href="#" class="text-success comment-author-link" data-bs-toggle="modal"
+                    <a href="#" class="green green-hover bold comment-author-link" data-bs-toggle="modal"
                         data-bs-target="#modal-comment-author-{{ comment.id }}">{{comment.author }}</a>
                     <!-- Modal to display comment author info -->
                     <div class="modal fade" id="modal-comment-author-{{ comment.id }}" tabindex="-1"
