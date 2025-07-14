@@ -197,4 +197,5 @@ Any remaining open issues can be tracked [here](https://www.github.com/marijavel
 
 > [!IMPORTANT]
 > There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
+> I encountered many more issues than those documented in the GitHub issues. I am aware of this; however, throughout the project development, I faced numerous challenges and, in order to resolve them quickly and stay on schedule, I unintentionally forgot to document many of them.
 
