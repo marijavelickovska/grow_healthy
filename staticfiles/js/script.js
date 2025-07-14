@@ -46,16 +46,6 @@ editBtn.addEventListener("click", function () {
 });
 
 
-/* On click on submit comment button, scroll to the top of the comments section 
- * where the new comment appears.*/ 
-document.getElementById("submitCommentButton").addEventListener("click", function () {
-    const commentsSection = document.getElementById("comments");
-    if (commentsSection) {
-        commentsSection.scrollIntoView({ behavior: "smooth" });
-    }
-});
-
-
 /* Adds click listeners to edit buttons that load the selected comment into the form for editing, 
  * change the submit button text to "Update," update the form action URL, 
  * and scroll to the top of the comments section where the updated comment appears.*/ 

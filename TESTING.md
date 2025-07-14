@@ -91,99 +91,43 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 ## Lighthouse Audit
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss testing the live/deployed site's Lighthouse Audit reports. Avoid testing the local version (Gitpod/VSCode/etc.), as this can have knock-on effects for performance. If you don't have "Lighthouse" in your Developer Tools, it can be added as an [extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk).
-
-Unless your project is a single-page application (SPA), you should test Lighthouse Audit results for all of your pages, for both *mobile* and *desktop*.
-
-**IMPORTANT**: You must provide screenshots of the results, to "prove" that you've actually tested them.
-
-⚠️ --- END --- ⚠️
-
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
 
 | Page | Mobile | Desktop |
 | --- | --- | --- |
-| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
-| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
 | Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
-| Add Blog | ![screenshot](documentation/lighthouse/mobile-add-blog.png) | ![screenshot](documentation/lighthouse/desktop-add-blog.png) |
-| Edit Blog | ![screenshot](documentation/lighthouse/mobile-edit-blog.png) | ![screenshot](documentation/lighthouse/desktop-edit-blog.png) |
-| Blog Post | ![screenshot](documentation/lighthouse/mobile-blog-post.png) | ![screenshot](documentation/lighthouse/desktop-blog-post.png) |
+| Signup | ![screenshot](documentation/lighthouse/mobile-signup.png) | ![screenshot](documentation/lighthouse/desktop-signup.png) |
+| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
+| Dashboard | ![screenshot](documentation/lighthouse/mobile-dashboard.png) | ![screenshot](documentation/lighthouse/desktop-dashboard.png) |
+| Recipe Detail | ![screenshot](documentation/lighthouse/mobile-recipe_detail.png) | ![screenshot](documentation/lighthouse/desktop-recipe_detail.png) |
+| Add Recipe | ![screenshot](documentation/lighthouse/mobile-add_recipe.png) | ![screenshot](documentation/lighthouse/desktop-add_recipe.png) |
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
 ## Defensive Programming
-
-⚠️ INSTRUCTIONS ⚠️
-
-Defensive programming (defensive design) is extremely important! When building projects that accept user inputs or forms, you should always test the level of security for each form field. Examples of this could include (but not limited to):
-
-All Projects:
-
-- Users cannot submit an empty form (add the `required` attribute)
-- Users must enter valid field types (ensure the correct input `type=""` is used)
-- Users cannot brute-force a URL to navigate to a restricted pages
-
-Python Projects:
-
-- Users cannot perform CRUD functionality if not authenticated (if login functionality exists)
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers/admins
-
-You'll want to test all functionality on your application, whether it's a standard form, or CRUD functionality, for data manipulation on a database. Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser). You should include any manual tests performed, and the expected results/outcome.
-
-Testing should be replicable (can someone else replicate the same outcome?). Ideally, tests cases should focus on each individual section of every page on the website. Each test case should be specific, objective, and step-wise replicable.
-
-Instead of adding a general overview saying that everything works fine, consider documenting tests on each element of the page (eg. button clicks, input box validation, navigation links, etc.) by testing them in their "happy flow", their "bad/exception flow", mentioning the expected and observed results, and drawing a parallel between them where applicable.
-
-Consider using the following format for manual test cases:
-
-- Expected Outcome / Test Performed / Result Received / Fixes Implemented
-
-- **Expected**: "Feature is expected to do X when the user does Y."
-- **Testing**: "Tested the feature by doing Y."
-- (either) **Result**: "The feature behaved as expected, and it did Y."
-- (or) **Result**: "The feature did not respond to A, B, or C."
-- **Fix**: "I did Z to the code because something was missing."
-
-Use the table below as a basic start, and expand on it using the logic above.
-
-⚠️ --- END --- ⚠️
 
 Defensive programming was manually tested with the below user acceptance testing:
 
 | Page | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
-| Blog Management | Feature is expected to allow the blog owner to create new posts with a title, featured image, and content. | Created a new post with valid title, image, and content data. | Post was created successfully and displayed correctly in the blog. | ![screenshot](documentation/defensive/create-post.png) |
-| | Feature is expected to allow the blog owner to update existing posts. | Edited the content of an existing blog post. | Post was updated successfully with the new content. | ![screenshot](documentation/defensive/update-post.png) |
-| | Feature is expected to allow the blog owner to delete blog posts. | Attempted to delete a blog post, confirming the action before proceeding. | Blog post was deleted successfully. | ![screenshot](documentation/defensive/delete-post.png) |
-| | Feature is expected to retrieve a list of all published posts. | Accessed the blog owner dashboard to view all published posts. | All published posts were displayed in a list view. | ![screenshot](documentation/defensive/published-posts.png) |
-| | Feature is expected to preview posts as drafts before publishing. | Created a draft post and previewed it. | Draft was displayed correctly in preview mode. | ![screenshot](documentation/defensive/preview-draft.png) |
-| Comments Management | Feature is expected to allow the blog owner to approve or reject comments. | Approved and rejected comments from the dashboard. | Approved comments were published; rejected comments were removed. | ![screenshot](documentation/defensive/review-comments.png) |
-| | Feature is expected to allow the blog owner to edit or delete comments. | Edited and deleted existing comments. | Comments were updated or removed successfully. | ![screenshot](documentation/defensive/edit-delete-comments.png) |
-| User Authentication | Feature is expected to allow registered users to log in to the site. | Attempted to log in with valid and invalid credentials. | Login was successful with valid credentials; invalid credentials were rejected. | ![screenshot](documentation/defensive/login.png) |
-| | Feature is expected to allow users to register for an account. | Registered a new user with unique credentials. | User account was created successfully. | ![screenshot](documentation/defensive/register.png) |
-| | Feature is expected to allow users to log out securely. | Logged out and tried accessing a restricted page. | Access was denied after logout, as expected. | ![screenshot](documentation/defensive/logout.png) |
-| User Comments | Feature is expected to allow registered users to leave comments on blog posts. | Logged in and added comments to a blog post. | Comments were successfully added and marked as pending approval. | ![screenshot](documentation/defensive/add-comment.png) |
-| | Feature is expected to display a notification that comments are pending approval. | Added a comment and checked the notification message. | Notification was displayed as expected. | ![screenshot](documentation/defensive/pending-approval.png) |
-| | Feature is expected to allow users to edit their own comments. | Edited personal comments. | Comments were updated as expected. | ![screenshot](documentation/defensive/edit-user-comments.png) |
-| | Feature is expected to allow users to delete their own comments. | Deleted personal comments. | Comments were removed as expected. | ![screenshot](documentation/defensive/delete-user-comments.png) |
-| Guest Features | Feature is expected to allow guest users to read blog posts without registering. | Opened blog posts as a guest user. | Blog posts were fully accessible without logging in. | ![screenshot](documentation/defensive/view-posts-guest.png) |
-| | Feature is expected to display the names of other commenters on posts. | Checked the names of commenters on posts as a guest user. | Commenter names were displayed as expected. | ![screenshot](documentation/defensive/commenter-names.png) |
-| | Feature is expected to block standard users from brute-forcing admin pages. | Attempted to navigate to admin-only pages by manipulating the URL (e.g., `/admin`). | Access was blocked, and a message was displayed showing denied access. | ![screenshot](documentation/defensive/brute-force.png) |
+| Home | When a non-logged-in user clicks on a recipe, they should not be able to access the recipe details. Instead, they should be informed that they need to log in to view the recipe details. | Clicked on a recipe while not logged in. | The page scrolled down to the "Join us" section and displayed the message: "To see the recipe details, please log in or sign up." | ![screenshot](documentation/defensive/recipe-click-not-logged-in.png) |
+| Dashboard | After successful login, the user should be redirected to the dashboard. Their profile name should appear in the navbar, and a success message should be displayed below the navbar. | Logged in with valid user credentials. | User was redirected to the dashboard. The navbar showed "Hello [username]", and a success message appeared below the navbar. | ![screenshot](documentation/defensive/login-success.png) |
+| | When clicking the edit button, the disabled fields (name, about me, and profile picture) should become enabled for editing. After clicking save, the updated information should be saved successfully. | Clicked the edit button, modified the name, about me, and profile picture fields, then clicked save. | The fields were enabled after clicking edit, changes were saved successfully after clicking save. | ![screenshot](documentation/defensive/dashboard-edit-profile.png) |
+| | If there are more than 8 recipes, pagination should appear. The correct number of pages should be shown. On the first page, only the "Next" button should be visible; on the last page, only the "Previous" button should be shown. | Added more than 8 recipes to the dashboard and navigated through pages. | Pagination appeared correctly. Page numbers were displayed. The first page showed only the "Next" button, and the last page showed only the "Previous" button. | ![screenshot](documentation/defensive/pagination.png) |
+| | On clicking "My Recipes" in the sub-navbar, only the recipes added by the logged-in user should be displayed. | Clicked "My Recipes" in the sub-navbar. | Only the user's own recipes were displayed correctly. | ![screenshot](documentation/defensive/dashboard-my-recipes.png) |
+| | On clicking "Favourites" in the sub-navbar, only the recipes marked as favourite by the user should be displayed. | Clicked "Favourites" in the sub-navbar. | Only the user's favourite recipes were displayed correctly. | ![screenshot](documentation/defensive/dashboard-favourites.png) |
+| | Each recipe card should display icons for like, comment, and favourites. Clicking the like icon should increase the like count and highlight the icon; clicking again should undo the like. Clicking the comment icon should navigate to the recipe detail page with the comments section. Clicking the favourites icon should turn it red to indicate it is saved; clicking again should remove it from favourites and reset the icon color. After each action, the user should be notified with a success message. | Clicked like – icon highlighted and count increased; clicked again – count decreased and icon reset. Clicked comment – navigated to recipe detail with comments visible. Clicked favourites – icon turned red; clicked again – icon reset. After each click, a success message was displayed to confirm the action. | All three icons functioned correctly with appropriate actions, visual feedback, and success messages. | ![screenshot](documentation/defensive/recipe-card-icons.png) |
+| Recipe Detail | When a logged-in user clicks on a recipe, the recipe details should open and display all necessary fields such as image, title, meal type, ingredients, instructions, creator, date, comments, a form to add comments, and edit/delete buttons for both the recipe and comments if they belong to the logged-in user. Otherwise, the edit/delete buttons should not be visible. | Logged in as a user and clicked on a recipe. Verified the display of all recipe details and the visibility of edit/delete buttons only on user-owned content. | Recipe details displayed correctly. Edit and delete buttons appeared only for the recipe and comments owned by the logged-in user. | ![screenshot](documentation/defensive/recipe-detail-logged-in.png) |
+| | On clicking the edit icon, the edit recipe form should open. Upon submitting valid changes, the recipe should be successfully updated and a confirmation message should be displayed. | Clicked "Edit Recipe", modified title and ingredients, then submitted the form. | The recipe was successfully updated and a "Recipe successfully updated." message appeared. | ![screenshot](documentation/defensive/edit-recipe-success.png) |
+| | On clicking the delete icon, a confirmation modal should appear. Upon clicking delete, the recipe should be successfully deleted and a success message should be displayed. | Clicked the delete icon, confirmed the deletion in the modal. | The recipe was successfully deleted and a "Receptot e uspesno izbrisan" message appeared. | ![screenshot](documentation/defensive/delete-recipe-success.png) |
+| | Clicking on the author's name (next to "Created by" in the recipe section and in the comments) should open a modal showing the author's information including their profile picture, name, and about section. | Clicked the author's name in both the recipe and comment sections. | A modal appeared displaying the creator's profile image, full name, and about info. | ![screenshot](documentation/defensive/author-info-modal.png) |
+| | Clicking the edit icon on a recipe should open the edit form populated with the recipe's existing data. After correctly filling in the form and submitting, the recipe should be updated and a success message should be displayed. | Clicked the edit icon – form opened with pre-filled data. Modified fields and submitted. | Recipe was successfully updated and a "Recipe successfully updated" message appeared. | ![screenshot](documentation/defensive/edit-recipe.png) |
+| | If the logged-in user clicks the delete icon on one of their own recipes, the recipe should be deleted and a success message should be shown. | Clicked the delete icon on a recipe owned by the logged-in user. | Recipe was successfully deleted and a "Recipe was successfully deleted" message appeared. | ![screenshot](documentation/defensive/delete-recipe.png) |
+| | Below the recipe details, there is a comments section displaying all existing comments and a form to add a new one. On submitting the form, a new comment should be successfully added. For comments authored by the currently logged-in user, edit and delete icons should appear. Clicking edit allows the comment to be updated; clicking delete removes the comment. After each action, a success message should be displayed. | Submitted a new comment – it appeared in the list. On an existing comment owned by the logged-in user, clicked edit – updated comment was saved and message shown. Clicked delete – comment was removed and confirmation message appeared. | Add, edit, and delete actions worked correctly with appropriate UI updates and success messages for each. | ![screenshot](documentation/defensive/comment-section.png) |
+| Add Recipe | If the user tries to submit the add recipe form without filling in one or more required fields, the form should not submit and validation messages should be displayed indicating which fields are required. | Opened the add recipe page, left required fields empty, and clicked submit. | Form was not submitted. Validation messages appeared next to the empty required fields indicating they are mandatory. | ![screenshot](documentation/defensive/add-recipe-validation.png) |
+| | On correctly filling all required fields and submitting the form, the recipe should be saved, displayed in "My Recipes", and a success message "Recipe added successfully" should be shown. | Filled in all required fields and submitted the form. | Recipe was added successfully, appeared in "My Recipes", and a success message was shown. | ![screenshot](documentation/defensive/add-recipe-success.png) |
 | 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`). | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.png) |
 
 ## User Story Testing
-
-⚠️ INSTRUCTIONS ⚠️
-
-Testing User Stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **Features** should already align with the **User Stories**, so this should be as simple as creating a table with the User Story, matching with the re-used screenshot from the respective Feature.
-
-⚠️ --- END --- ⚠️
 
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |

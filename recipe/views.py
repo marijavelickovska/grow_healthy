@@ -57,6 +57,7 @@ def edit_recipe(request, recipe_id):
         recipe_form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if recipe_form.is_valid():
             recipe_form.save()
+            messages.success(request, "Recipe successfully updated.")
             return redirect('recipe_detail', pk=recipe.id)
         else:
             messages.error(
