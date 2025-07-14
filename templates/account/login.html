@@ -12,15 +12,17 @@
 <div class="container-fluid">
   <div class="row text-center">
     <div class="col-12 col-md-6 pt-5">
-      <h2 class="fst-italic green my-5 logIn-welcome">Welcome to Grow Healthy</h2>
-      <h2 class="fst-italic green">Log in</h2>
+      <div class="title-login">
+        <h2 class="fst-italic green">Welcome to Grow Healthy!</h2>
+        <h2 class="fst-italic green">Log in</h2>
+      </div>
       <form class="login my-4" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btnGreen px-5 mb-4" type="submit">Log In</button>
+        <button class="btn btnGreen px-5 mb-5" type="submit">Log In</button>
         <p>If you don't have an account yet, you can sign up <a class="link" href="{{ signup_url }}">here</a></p>
       </form>
     </div>

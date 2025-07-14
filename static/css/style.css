@@ -6,7 +6,7 @@
   --primary-font: "Roboto", sans-serif;
   --secondary-font: "Merriweather", sans-serif;
   --primary-color: #ded4c8; /* #ceb3a3 */
-  --secondary-color: #5B6A20;
+  --secondary-color: #5b6a20;
   --hover-color: #90a92e;
   --brown-color: #aa4933;
 }
@@ -18,6 +18,7 @@
 
 html,
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -128,6 +129,22 @@ h1 {
 #join-us-message {
   display: none;
   color: var(--brown-color);
+}
+
+/* Log In / Sign Up */
+.title-signup,
+.title-login {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#signup_form {
+  list-style-position: outside;
+  padding-left: 0;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left; /* или center ако сакаш центриран текст */
+  max-width: 500px; /* ограничување на ширина за подобар изглед */
 }
 
 /* Dashboard */
@@ -255,7 +272,7 @@ footer a {
 @media screen and (max-width: 576px) {
   .username p {
     display: none;
-  } 
+  }
 
   .image-side {
     height: 200px;
@@ -270,11 +287,6 @@ footer a {
     width: 8rem;
     margin-top: 0.5rem;
   }
-
-  .logIn-welcome,
-  .signUp-welcome {
-    margin: 0.5rem 0 !important;
-  }
 }
 
 @media screen and (min-width: 576px) {
@@ -284,6 +296,12 @@ footer a {
 }
 
 @media screen and (min-width: 768px) {
+  .title-signup,
+  .title-login {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
   .sub-nav-btn:not(:last-child) {
     border-right: none;
   }
