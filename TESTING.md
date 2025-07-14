@@ -11,11 +11,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | Screenshot | Notes |
 | --- | --- | --- | --- |
-| home | [home.html](https://github.com/marijavelickovska/grow_healthy/blob/main/home/templates/home/home.html) | ![screenshot](documentation/validation/html-home-home.png) | Notes (if applicable) |
-| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) | Notes (if applicable) |
+| home | [home.html](https://github.com/marijavelickovska/grow_healthy/blob/main/home/templates/home/home.html) | ![screenshot](documentation/validation/html-home-home.png) |  |
+| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) |  |
 | user_profile | [recipe_detail.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/recipe_detail.html) | ![screenshot](documentation/validation/html-user_profile-recipe_detail.png) | During testing, 6 errors and 1 warning appear on recipe_detail.html, but these issues do not originate directly from this page. The reason is that recipe_detail.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
 | user_profile | [add_recipe.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/add_recipe.html) | ![screenshot](documentation/validation/html-user_profile-add_recipe.png) | During testing, 4 errors appear on add_recipe.html, but these errors do not originate directly from this page. The reason is that add_recipe.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
-| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | ![screenshot](documentation/validation/html-templates-404.png) | Notes (if applicable) |
+| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | ![screenshot](documentation/validation/html-templates-404.png) | |
 
 
 ### CSS
@@ -24,7 +24,7 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot |  Notes |
 | --- | --- | --- | --- | --- |
-| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | [link](https://jigsaw.w3.org/css-validator/validator) | ![screenshot](documentation/validation/css-static-style.png) | 
+| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | [link](https://jigsaw.w3.org/css-validator/validator) | ![screenshot](documentation/validation/css-static-style.png) | |
 
 
 ### JavaScript
@@ -33,7 +33,7 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) |
+| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) | |
 
 ### Python
 
@@ -41,24 +41,24 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| grow_healthy | [settings.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/settings.py) | ![screenshot](documentation/validation/py-grow_healthy-settings.png) | Notes (if applicable) |
-| grow_healthy | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/urls.py) | ![screenshot](documentation/validation/py-grow_healthy-urls.png) | Notes (if applicable) |
-| home | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/urls.py) | ![screenshot](documentation/validation/py-home-urls.png) | Notes (if applicable) |
-| home | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/views.py) | ![screenshot](documentation/validation/py-home-views.png) | Notes (if applicable) |
-| recipe | [test_forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/recipe/tests/test_forms.py) | ![screenshot](documentation/validation/py-recipe-test-forms.png) | Notes (if applicable) |
-| recipe | [test_views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/recipe/tests/test_views.py) | ![screenshot](documentation/validation/py-recipe-test-views.png) | Notes (if applicable) |
-| recipe | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/admin.py) | ![screenshot](documentation/validation/py-recipe-admin.png) | Notes (if applicable) |
-| recipe | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/forms.py) | ![screenshot](documentation/validation/py-recipe-forms.png) | Notes (if applicable) |
-| recipe | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/models.py) | ![screenshot](documentation/validation/py-recipe-models.png) | Notes (if applicable) |
-| recipe | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/views.py) | ![screenshot](documentation/validation/py-recipe-views.png) | Notes (if applicable) |
-| user_profile | [test-forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/user_profile/tests/test_forms.py) | ![screenshot](documentation/validation/py-user_profile-test-forms.png) | Notes (if applicable) |
-| user_profile | [test-views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/user_profile/tests/test_views.py) | ![screenshot](documentation/validation/py-user_profile-test-views.png) | Notes (if applicable) |
-| user_profile | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/admin.py) | ![screenshot](documentation/validation/py-user_profile-admin.png) | Notes (if applicable) |
-| user_profile | [context_processors.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/context_processors.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/context_processors.py) | ![screenshot](documentation/validation/py-user_profile-context_processors.png) | Notes (if applicable) |
-| user_profile | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/forms.py) | ![screenshot](documentation/validation/py-user_profile-forms.png) | Notes (if applicable) |
-| user_profile | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/models.py) | ![screenshot](documentation/validation/py-user_profile-models.png) | Notes (if applicable) |
-| user_profile | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/urls.py) | ![screenshot](documentation/validation/py-user_profile-urls.png) | Notes (if applicable) |
-| user_profile | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/views.py) | ![screenshot](documentation/validation/py-user_profile-views.png) | Notes (if applicable) |
+| grow_healthy | [settings.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/settings.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/settings.py) | ![screenshot](documentation/validation/py-grow_healthy-settings.png) | |
+| grow_healthy | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/grow_healthy/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/grow_healthy/urls.py) | ![screenshot](documentation/validation/py-grow_healthy-urls.png) | |
+| home | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/urls.py) | ![screenshot](documentation/validation/py-home-urls.png) | |
+| home | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/home/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/home/views.py) | ![screenshot](documentation/validation/py-home-views.png) | |
+| recipe | [test_forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/recipe/tests/test_forms.py) | ![screenshot](documentation/validation/py-recipe-test-forms.png) | |
+| recipe | [test_views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/recipe/tests/test_views.py) | ![screenshot](documentation/validation/py-recipe-test-views.png) | |
+| recipe | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/admin.py) | ![screenshot](documentation/validation/py-recipe-admin.png) | |
+| recipe | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/forms.py) | ![screenshot](documentation/validation/py-recipe-forms.png) | |
+| recipe | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/models.py) | ![screenshot](documentation/validation/py-recipe-models.png) | |
+| recipe | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/recipe/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/recipe/views.py) | ![screenshot](documentation/validation/py-recipe-views.png) | |
+| user_profile | [test-forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/user_profile/tests/test_forms.py) | ![screenshot](documentation/validation/py-user_profile-test-forms.png) | |
+| user_profile | [test-views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/tests/test_views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/refs/heads/main/user_profile/tests/test_views.py) | ![screenshot](documentation/validation/py-user_profile-test-views.png) | |
+| user_profile | [admin.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/admin.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/admin.py) | ![screenshot](documentation/validation/py-user_profile-admin.png) | |
+| user_profile | [context_processors.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/context_processors.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/context_processors.py) | ![screenshot](documentation/validation/py-user_profile-context_processors.png) | |
+| user_profile | [forms.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/forms.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/forms.py) | ![screenshot](documentation/validation/py-user_profile-forms.png) | |
+| user_profile | [models.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/models.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/models.py) | ![screenshot](documentation/validation/py-user_profile-models.png) | |
+| user_profile | [urls.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/urls.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/urls.py) | ![screenshot](documentation/validation/py-user_profile-urls.png) | |
+| user_profile | [views.py](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/views.py) | [PEP8 CI Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/marijavelickovska/grow_healthy/main/user_profile/views.py) | ![screenshot](documentation/validation/py-user_profile-views.png) | |
 
 
 ## Responsiveness
@@ -131,26 +131,16 @@ Defensive programming was manually tested with the below user acceptance testing
 
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- | --- |
-| As a blog owner | I would like to create new blog posts with a title, featured image, and content | so that I can share my experiences with my audience. | ![screenshot](documentation/features/feature01.png) |
-| As a blog owner | I would like to update existing blog posts | so that I can correct or add new information to my previous stories. | ![screenshot](documentation/features/feature02.png) |
-| As a blog owner | I would like to delete blog posts | so that I can remove outdated or irrelevant content from my blog. | ![screenshot](documentation/features/feature03.png) |
-| As a blog owner | I would like to retrieve a list of all my published blog posts | so that I can manage them from a central dashboard. | ![screenshot](documentation/features/feature04.png) |
-| As a blog owner | I would like to preview a post as draft before publishing it | so that I can ensure formatting and content appear correctly. | ![screenshot](documentation/features/feature05.png) |
-| As a blog owner | I would like to review comments before they are published | so that I can filter out spam or inappropriate content. | ![screenshot](documentation/features/feature06.png) |
-| As a blog owner | I would like to approve or reject comments from users | so that I can maintain control over the discussion on my posts. | ![screenshot](documentation/features/feature07.png) |
-| As a blog owner | I would like to view a list of all comments (both approved and pending) | so that I can manage user engagement effectively. | ![screenshot](documentation/features/feature08.png) |
-| As a blog owner | I would like to edit or delete user comments | so that I can clean up or remove inappropriate responses after they've been posted. | ![screenshot](documentation/features/feature09.png) |
-| As a registered user | I would like to log in to the site | so that I can leave comments on blog posts. | ![screenshot](documentation/features/feature10.png) |
-| As a registered user | I would like to register for an account | so that I can become part of the community and engage with the blog. | ![screenshot](documentation/features/feature11.png) |
-| As a registered user | I would like to leave a comment on a blog post | so that I can share my thoughts or ask questions about the owner's experiences. | ![screenshot](documentation/features/feature12.png) |
-| As a registered user | I would like my comment to show my name and the timestamp | so that others can see who I am and when I left the comment. | ![screenshot](documentation/features/feature13.png) |
-| As a registered user | I would like to receive a notification or message saying my comment is pending approval | so that I understand it hasn't been posted immediately. | ![screenshot](documentation/features/feature14.png) |
-| As a registered user | I would like to edit or delete my own comments | so that I can fix mistakes or retract my statement. | ![screenshot](documentation/features/feature15.png) |
-| As a guest user | I would like to read blog posts without registering | so that I can enjoy the content without needing to log in. | ![screenshot](documentation/features/feature16.png) |
-| As a guest user | I would like to browse past posts | so that I can explore the blog's full content history. | ![screenshot](documentation/features/feature17.png) |
-| As a guest user | I would like to register for an account | so that I can participate in the community by leaving comments on posts. | ![screenshot](documentation/features/feature18.png) |
-| As a guest user | I would like to see the names of other commenters on posts | so that I can get a sense of community interaction before registering. | ![screenshot](documentation/features/feature19.png) |
-| As a user | I would like to see a 404 error page if I get lost | so that it's obvious that I've stumbled upon a page that doesn't exist. | ![screenshot](documentation/features/feature20.png) |
+| As a user | I can visit the homepage and immediately understand what the site is about and view recipes | so that I know what the platform offers and can explore content. | ![screenshot](documentation/features/home.png) |
+| As a user | I can register and create a profile | so that I can save my preferences and post recipes. | ![screenshot](documentation/features/login.png) |
+| As a user | I can add a new recipe | so that I can share my ideas with others. | ![screenshot](documentation/features/add_recipe.png) |
+| As a user | I can view a recipe with ingredients and steps | so that I can follow it easily while cooking. | ![screenshot](documentation/features/recipe_detail.png) |
+| As a user | I can favorite a recipe | so that I can easily find it later. | ![screenshot](documentation/features/dashboard-favourites.png) |
+| As a user | I can like or unlike a recipe | so that I can show appreciation or remove my like. | ![screenshot](documentation/features/like_comment_favourite.png) |
+| As a user | I can comment on recipes | so that I can give feedback or ask questions. | ![screenshot](documentation/features/add_comment.png) |
+| As a user | I can see the number of likes and comments on each recipe | so that I know which recipes are popular. | ![screenshot](documentation/features/like_comment_favourite.png) |
+| As a user | I can click on a recipe or comment author to view their profile information in a modal | so that I can learn more about the person who created the content. | ![screenshot](documentation/features/author-info-modal.png) |
+| As a site admin | I can manage user comments and recipes | so that I can remove any inappropriate content. | ![screenshot](documentation/features/admin.png) |
 
 ## Automated Testing
 
@@ -161,55 +151,22 @@ I have conducted a series of automated tests on my application.
 
 ### Python (Unit Testing)
 
-⚠️ INSTRUCTIONS ⚠️
-
-Adjust the code below (file names, function names, etc.) to match your own project files/folders. Use these notes loosely when documenting your own Python Unit tests, and remove/adjust where applicable.
-
-⚠️ SAMPLE ⚠️
-
 I have used Django's built-in unit testing framework to test the application functionality. In order to run the tests, I ran the following command in the terminal each time:
 
-- `python3 manage.py test name-of-app`
+- `python manage.py test recipe.tests.test_forms`
+- `python manage.py test recipe.tests.test_views`
+- `python manage.py test user_profile.tests.test_forms`
+- `python manage.py test user_profile.tests.test_views`
 
-To create the coverage report, I would then run the following commands:
+| App | Test | Screenshot |
+| --- | --- | --- |
+| recipe | forms | ![screenshot](documentation/automation/recipe-test-forms.png) |
+| recipe | views | ![screenshot](documentation/automation/recipe-test-forms.png) |
+| user_profile | forms | ![screenshot](documentation/automation/user_profile-test-forms.png) |
+| user_profile | views | ![screenshot](documentation/automation/user_profile-test-forms.png) |
 
-- `pip3 install coverage`
-- `pip3 freeze --local > requirements.txt`
-- `coverage run --omit=*/site-packages/*,*/migrations/*,*/__init__.py,env.py,.env manage.py test`
-- `coverage report`
-
-To see the HTML version of the reports, and find out whether some pieces of code were missing, I ran the following commands:
-
-- `coverage html`
-- `python3 -m http.server`
-
-Below are the results from the full coverage report on my application that I've tested:
-
-![screenshot](documentation/automation/html-coverage.png)
-
-#### Unit Test Issues
-
-⚠️ INSTRUCTIONS ⚠️
-
-Use this section to list any known issues you ran into while writing your Python unit tests. Remember to include screenshots (where possible), and a solution to the issue (if known). This can be used for both "fixed" and "unresolved" issues. Remove this sub-section entirely if you somehow didn't run into any issues while working with your tests.
-
-⚠️ --- END --- ⚠️
 
 ## Bugs
-
-⚠️ INSTRUCTIONS ⚠️
-
-Nobody likes bugs,... except the assessors! Projects seem more suspicious if a student doesn't properly track their bugs. If you're about to submit your project without any bugs listed below, you should ask yourself why you're doing this course in the first place, if you're able to build this entire application without running into any bugs. The best thing you can do for any project is to document your bugs! Not only does it show the true stages of development, but think of it as breadcrumbs for yourself in the future, should you encounter the same/similar bug again, it acts as a gentle reminder on what you did to fix the bug.
-
-If/when you encounter bugs during the development stages of your project, you should document them here, ideally with a screenshot explaining what the issue was, and what you did to fix the bug.
-
-Alternatively, an improved way to manage bugs is to use the built-in **[Issues](https://www.github.com/marijavelickovska/grow_healthy/issues)** tracker on your GitHub repository. This can be found at the top of your repository, the tab called "Issues".
-
-If using the Issues tracker for bug management, you can simplify the documentation process for testing. Issues allow you to directly paste screenshots into the issue page without having to first save the screenshot locally. You can add labels to your issues (e.g. `bug`), assign yourself as the owner, and add comments/updates as you progress with fixing the issue(s). Once you've solved the issue/bug, you should then "Close" it.
-
-When showcasing your bug tracking for assessment, you can use the following examples below.
-
-⚠️ --- END --- ⚠️
 
 ### Fixed Bugs
 
@@ -223,14 +180,6 @@ All previously closed/fixed bugs can be tracked [here](https://www.github.com/ma
 
 ### Unfixed Bugs
 
-⚠️ INSTRUCTIONS ⚠️
-
-You will need to mention any unfixed bugs and why they are not fixed upon submission of your project. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. Where possible, you must fix all outstanding bugs, unless outside of your control.
-
-If you've identified any unfixed bugs, no matter how small, be sure to list them here! It's better to be honest and list them, because if it's not documented and an assessor finds the issue, they need to know whether or not you're aware of them as well, and why you've not corrected/fixed them.
-
-⚠️ --- END --- ⚠️
-
 [![GitHub issues](https://img.shields.io/github/issues/marijavelickovska/grow_healthy)](https://www.github.com/marijavelickovska/grow_healthy/issues)
 
 Any remaining open issues can be tracked [here](https://www.github.com/marijavelickovska/grow_healthy/issues).
@@ -241,9 +190,10 @@ Any remaining open issues can be tracked [here](https://www.github.com/marijavel
 
 | Issue | Screenshot |
 | --- | --- |
-| On devices smaller than 375px, the page starts to have horizontal `overflow-x` scrolling. | ![screenshot](documentation/issues/overflow.png) |
-| When validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. | ![screenshot](documentation/issues/section-header.png) |
-| Validation errors on "signup.html" coming from the Django Allauth package. | ![screenshot](documentation/issues/allauth.png) |
+| Errors that appeared during HTML validation of the recipe_detail.html. | ![screenshot](documentation/issues/html-user_profile-recipe_detail.png) |
+| Errors that appeared during HTML validation of the add_recipe.html. | ![screenshot](documentation/issues/html-user_profile-add_recipe.png) |
+
+
 
 > [!IMPORTANT]
 > There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.

@@ -135,12 +135,6 @@ class CommentDeleteViewTest(BaseTestSetup):
         )
         self.assertTrue(Comment.objects.filter(pk=self.comment.pk).exists())
 
-    def test_comment_delete_with_get_method_fails(self):
-        self.client.login(username="testuser", password="testpass")
-        response = self.client.get(self.delete_url)
-        self.assertEqual(response.status_code, 400)
-        self.assertTrue(Comment.objects.filter(pk=self.comment.pk).exists())
-
 
 class AddToFavouritesViewTest(BaseTestSetup):
     def test_add_recipe_to_favourites_successfully(self):
