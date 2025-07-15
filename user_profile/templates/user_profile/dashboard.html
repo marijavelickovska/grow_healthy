@@ -5,9 +5,8 @@
 
 {% block main_class %}container-fluid{% endblock %}
 
-{% block dashboard %}
 <!-- main-dashboard.html -->
-
+{% block dashboard %}
 <div class="row">
     <!-- Sidebar -->
     <aside class="col-12 col-md-3 text-center">
@@ -42,13 +41,12 @@
             </div>
         </form>
     </aside>
-    <!-- Main content -->
+    <!-- Subnavbar and Recipe List -->
     <section class="col-12 col-md-9">
-        <h2 class="mb-4 hidden">Dashboard / Sub-navbar</h2>
         <div class="row">
             <div class="col-12">
                 <div class="row">
-                    <!-- Sub-navbar -->
+                    <!-- Subnavbar -->
                     <div class="col-12 d-flex flex-column flex-md-row p-0 mb-md-4">
                         <a href="{% url 'dashboard' %}"
                             class="sub-nav-btn flex-fill text-center {% if request.resolver_match.url_name == 'dashboard' or request.resolver_match.url_name == 'recipe_detail' %} active{% endif %}">Dashboard</a>

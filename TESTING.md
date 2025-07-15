@@ -192,10 +192,11 @@ Any remaining open issues can be tracked [here](https://www.github.com/marijavel
 | --- | --- |
 | Errors that appeared during HTML validation of the recipe_detail.html. | ![screenshot](documentation/issues/html-user_profile-recipe_detail.png) |
 | Errors that appeared during HTML validation of the add_recipe.html. | ![screenshot](documentation/issues/html-user_profile-add_recipe.png) |
-
+| When validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. | ![screenshot](documentation/issues/section-header.png) |
+| When there aren’t enough recipe cards to fill the vertical space of the page, the pagination component floats higher up instead of staying at the bottom. I documented this as an issue, and although I tried to fix it, it likely requires layout planning from the start of the project. Since implementing it now would involve restructuring multiple components and risk breaking existing functionality, I decided to leave it as is for the moment. | ![screenshot](documentation/issues/dashboard-pagination.png) |
 
 
 > [!IMPORTANT]
-> There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
 > I encountered many more issues than those documented in the GitHub issues. I am aware of this; however, throughout the project development, I faced numerous challenges and, in order to resolve them quickly and stay on schedule, I unintentionally forgot to document many of them.
+> There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
 

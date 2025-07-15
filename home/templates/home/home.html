@@ -8,7 +8,6 @@
 <!-- Hero section -->
 {% block hero_image %}
 <section class="container">
-    <h2 class="hidden">Hero image</h2>
     <div class="row">
         <div class="col-12" id="hero-image"></div>
     </div>
@@ -18,7 +17,6 @@
 <!-- Messages -->
 {% block home_messages %}
 <section class="container">
-    <h2 class="hidden">Messages</h2>
     <div class="row mt-2">
         <div class="col-12">
             {% if messages %}
@@ -41,7 +39,6 @@
 <!-- About section -->
 {% block about_grow_healthy %}
 <section class="container">
-    <h2 class="hidden">About Grow Healthy</h2>
     <div class="row d-flex justify-content-center text-center">
         <div class="col-12 mt-4 h-100">
             <h3 class="green">Welcome to</h3>
@@ -61,7 +58,8 @@
                 daily changes can have a big impact on your child's growth and development.
 
                 We believe that every child deserves a healthy start, and that starts at home — with informed choices
-                and simple, joyful meals.</p>
+                and simple, joyful meals.
+            </p>
         </div>
     </div>
 </section>
@@ -70,8 +68,8 @@
 <!-- Recipes section -->
 {% block home_recipes_list %}
 <section class="container my-4">
-    <h2 class="hidden">Latest Recipes</h2>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <!-- Recipe cards -->
         {% for recipe in recipe_list %}
         <div class="col-12">
             <div class="card card-home my-4">
@@ -86,6 +84,7 @@
     </div>
     <div class="row my-4">
         <div class="col-12">
+            <!-- Pagination -->
             {% if is_paginated %}
             <nav aria-label="Page navigation">
                 <ul class="pagination justify-content-center">
@@ -106,7 +105,6 @@
 <!-- Join us section -->
 {% block join_us %}
 <section id="join_us" class="container mb-4">
-    <h2 class="hidden">Join us</h2>
     <div class="row text-center">
         <div class="col-12">
             <div id="join-us-message" class="mb-4">
