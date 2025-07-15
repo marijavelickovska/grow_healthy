@@ -153,19 +153,28 @@ I have conducted a series of automated tests on my application.
 
 ### Python (Unit Testing)
 
-I have used Django's built-in unit testing framework to test the application functionality. In order to run the tests, I ran the following command in the terminal each time:
+I have used Django's built-in unit testing framework to test the application functionality. In order to run the tests, I ran the following commands in the terminal each time:
 
 - `python manage.py test recipe.tests.test_forms`
 - `python manage.py test recipe.tests.test_views`
 - `python manage.py test user_profile.tests.test_forms`
 - `python manage.py test user_profile.tests.test_views`
 
-| App | Test | Screenshot |
-| --- | --- | --- |
-| recipe | forms | ![screenshot](documentation/automation/recipe-test-forms.png) |
-| recipe | views | ![screenshot](documentation/automation/recipe-test-forms.png) |
-| user_profile | forms | ![screenshot](documentation/automation/user_profile-test-forms.png) |
-| user_profile | views | ![screenshot](documentation/automation/user_profile-test-forms.png) |
+To create the coverage report, I would then run the following commands:
+
+- `pip3 install coverage`
+- `pip3 freeze --local > requirements.txt`
+- `coverage run --omit="*/site-packages/*,*/migrations/*,*/__init__.py,env.py,.env" manage.py test`
+- `coverage report`
+
+To see the HTML version of the reports, and find out whether some pieces of code were missing, I ran the following commands:
+
+- `coverage html`
+- `python3 -m http.server`
+
+Below are the results from the full coverage report on my application that I've tested:
+
+![screenshot](documentation/automation/html-coverage.png)
 
 
 ## Bugs
@@ -194,13 +203,9 @@ Any remaining open issues can be tracked [here](https://www.github.com/marijavel
 | --- | --- |
 | Errors that appeared during HTML validation of the recipe_detail.html. | ![screenshot](documentation/issues/html-user_profile-recipe_detail.png) |
 | Errors that appeared during HTML validation of the add_recipe.html. | ![screenshot](documentation/issues/html-user_profile-add_recipe.png) |
-| When there aren’t enough recipe cards to fill the vertical space of the page, the pagination component floats higher up instead of staying at the bottom. I documented this as an issue, and although I tried to fix it, it likely requires layout planning from the start of the project. Since implementing it now would involve restructuring multiple components and risk breaking existing functionality, I decided to leave it as is for the moment. | ![screenshot](documentation/issues/dashboard-pagination.png) |
 
 
-
-> [!IMPORTANT]
-
-> I encountered more issues than those documented in the GitHub issues. I am aware of this; however, throughout the project development, I faced numerous challenges and, in order to resolve them quickly and stay on schedule, I unintentionally forgot to document many of them.
-
+> [!IMPORTANT]  
+> I encountered more issues than those documented in the GitHub issues. I am aware of this; however, throughout the project development, I faced numerous challenges and, in order to resolve them quickly and stay on schedule, I unintentionally forgot to document many of them.  
 > There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
 

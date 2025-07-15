@@ -22,10 +22,10 @@
                 </p>
                 <hr>
                 <p class="fst-italic bold green">***Ingredients:</p>
-                <p class="card-text">{{ recipe.ingredients }}</p>
+                <p class="card-text">{{ recipe.ingredients|linebreaksbr }}</p>
                 <hr>
                 <p class="fst-italic bold green">***Instructions:</p>
-                <p class="card-text">{{ recipe.instructions }}</p>
+                <p class="card-text">{{ recipe.instructions|linebreaksbr }}</p>
                 <hr>
                 <div class="card-text fst-italic bold green">
                     Created by:
@@ -89,7 +89,7 @@
         {% for comment in comments %}
         <div class="card mb-2">
             <div class="card-body">
-                <p id="comment{{ comment.id }}" class="card-text">{{ comment.body }}</p>
+                <p id="comment{{ comment.id }}" class="card-text">{{ comment.body|linebreaksbr }}</p>
                 <div class="card-text fst-italic">
                     Created by:
                     <a href="#" class="green green-hover bold comment-author-link" data-bs-toggle="modal"
@@ -149,7 +149,7 @@
     <!-- Create new comment -->
     <div id="add_comment" class="col-12 col-sm-10 col-md-8 my-4">
         <h3>Add a comment:</h3>
-        <div class="card">
+        <div class="card" id="add-comment-border">
             <div class="card-body">
                 {% if user.is_authenticated %}
                 <p>Posting as: {{ user.username }}</p>
