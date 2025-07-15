@@ -47,7 +47,8 @@ editBtn.addEventListener("click", function () {
 
 /* Adds click listeners to edit buttons that load the selected comment into the form for editing, 
    change the submit button text to "Update", update the form action URL, 
-   and add a green border to visually highlight the comment form while editing */
+   add a green border to visually highlight the comment form while editing and
+   scroll to the 'add_comment' section where the comment that user want to edit appears.*/ 
 const editCommentButtons = document.getElementsByClassName("btn-edit-comment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
@@ -64,6 +65,12 @@ for (let button of editCommentButtons) {
 		submitCommentButton.innerText = "Update";
 		commentForm.setAttribute("action", `/user_profile/recipe/${recipeId}/edit_comment/${commentId}/`);
 
+		const commentSection = document.getElementById("add_comment");
+		if (commentSection) {
+			commentSection.scrollIntoView({
+				behavior: "smooth"
+			});
+		}
 	});
 }
 
