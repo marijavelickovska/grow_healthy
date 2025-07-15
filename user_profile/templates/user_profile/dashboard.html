@@ -64,21 +64,19 @@
             {% endblock %}
             {% block messages %}
             <!-- Messages -->
-            <div class="row mt-2">
-                <div class="col-12">
-                    {% if messages %}
-                    <section id="alerts">
-                        {% for msg in messages %}
-                        <aside
-                            class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} alert-dismissible fade show rounded-0 text-center"
-                            role="alert">
-                            {{ msg }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </aside>
-                        {% endfor %}
-                    </section>
-                    {% endif %}
-                </div>
+            <div class="col-12">
+                {% if messages %}
+                <section id="alerts">
+                    {% for msg in messages %}
+                    <aside
+                        class="alert {% if msg.tags == 'error' %}alert-danger{% else %}alert-{{ msg.tags }}{% endif %} alert-dismissible fade show rounded-0 text-center"
+                        role="alert">
+                        {{ msg }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </aside>
+                    {% endfor %}
+                </section>
+                {% endif %}
             </div>
             {% endblock %}
             {% block content %}
@@ -129,7 +127,7 @@
                         </div>
                     </div>
                     {% empty %}
-                    <div class="col text-center">
+                    <div class="col-12 text-center">
                         <h3>No recipes found</h3>
                     </div>
                     {% endfor %}
