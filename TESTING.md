@@ -13,11 +13,11 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | --- | --- | --- | --- |
 | home | [home.html](https://github.com/marijavelickovska/grow_healthy/blob/main/home/templates/home/home.html) | ![screenshot](documentation/validation/html-home-home.png) | Validating HTML with a semantic `<section>` element, the validator warns about lacking a header `h2-h6`. This is acceptable. |
 | templates | [signup.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/account/signup.html) | ![screenshot](documentation/validation/html-signup.png) | Validation errors on "signup.html" coming from the Django Allauth package. |
-| templates | [login.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/account/login.html) | ![screenshot](documentation/validation/html-login.png) |  |
-| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) |  |
-| user_profile | [recipe_detail.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/recipe_detail.html) | ![screenshot](documentation/validation/html-user_profile-recipe_detail.png) | During testing, 6 errors and 2 warning appear on recipe_detail.html, but these issues do not originate directly from this page. The reason is that recipe_detail.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
-| user_profile | [add_recipe.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/add_recipe.html) | ![screenshot](documentation/validation/html-user_profile-add_recipe.png) | During testing, 4 errors appear on add_recipe.html, but these errors do not originate directly from this page. The reason is that add_recipe.html extends ({% extends 'dashboard.html' %}), and dashboard.html passes without errors when tested separately. |
-| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | ![screenshot](documentation/validation/html-templates-404.png) | |
+| templates | [login.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/account/login.html) | ![screenshot](documentation/validation/html-login.png) | The validation passed without any errors. |
+| user_profile | [dashboard.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/dashboard.html) | ![screenshot](documentation/validation/html-user_profile-dashboard.png) | The validation passed without any errors.|
+| user_profile | [recipe_detail.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/recipe_detail.html) | ![screenshot](documentation/validation/html-user_profile-recipe_detail.png) | During HTML validation of recipe_detail.html, several errors appeared related to unclosed tags, empty headings, and incorrect aria-labelledby references. However, these issues most likely originate from the dashboard.html layout template, which recipe_detail extends. Interestingly, when validating dashboard.html directly, no errors are reported. This suggests that the issue may be caused by mismatched or improperly closed tags in the child template, or by how Django templates are composed and rendered together. |
+| user_profile | [add_recipe.html](https://github.com/marijavelickovska/grow_healthy/blob/main/user_profile/templates/user_profile/add_recipe.html) | ![screenshot](documentation/validation/html-user_profile-add_recipe.png) | These errors appear to be the same as those previously encountered in recipe_detail.html. They likely originate from the shared base template (dashboard.html), although that file alone passes validation. I attempted to resolve them but was unable to locate and fix the exact issue without refactoring the template structure. Since the layout renders correctly and no visual issues are present, these validation warnings have been documented but left unresolved for now. |
+| templates | [404.html](https://github.com/marijavelickovska/grow_healthy/blob/main/templates/404.html) | ![screenshot](documentation/validation/html-templates-404.png) | The validation passed without any errors. |
 
 
 ### CSS
@@ -26,7 +26,7 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot |  Notes |
 | --- | --- | --- | --- | --- |
-| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | [link](https://jigsaw.w3.org/css-validator/validator) | ![screenshot](documentation/validation/css-static-style.png) | |
+| static | [style.css](https://github.com/marijavelickovska/grow_healthy/blob/main/static/css/style.css) | [link](https://jigsaw.w3.org/css-validator/validator) | ![screenshot](documentation/validation/css-static-style.png) | The validation passed without any errors. |
 
 
 ### JavaScript
@@ -35,7 +35,7 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) | |
+| static | [script.js](https://github.com/marijavelickovska/grow_healthy/blob/main/static/js/script.js) | N/A | ![screenshot](documentation/validation/js-static-script.png) | The validation passed without any errors. |
 
 ### Python
 
